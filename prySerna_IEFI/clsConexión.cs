@@ -36,7 +36,7 @@ namespace prySerna_IEFI
                 }
 
             }
-            catch (Exception ex)
+            catch 
             {
                 return false;
             }
