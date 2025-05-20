@@ -30,10 +30,11 @@ namespace prySerna_IEFI
             clsConexión conexión = new clsConexión();
             Inicio.Usuario = txtUsuario.Text;
             Inicio.Contraseña = txtContraseña.Text;
-            bool InicioExitoso = conexión.Iniciar(Inicio);
+            int idUsuario = conexión.Iniciar(Inicio);
 
-            if (InicioExitoso)
+            if (idUsuario>0)
             {
+                //frmPrincipal principal = new frmPrincipal(idUsuario, Inicio.Usuario);
                 frmPrincipal principal = new frmPrincipal();
                 principal.Show();
                 this.Hide();

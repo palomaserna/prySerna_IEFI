@@ -16,5 +16,11 @@ namespace prySerna_IEFI
         {
             InitializeComponent();
         }
+
+        private void frmAuditoria_Load(object sender, EventArgs e)
+        {
+            clsConexión BD = new clsConexión();
+            BD.CargarUsuarios(dgvAuditoria);
+        }
     }
 }
