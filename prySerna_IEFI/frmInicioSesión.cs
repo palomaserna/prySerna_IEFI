@@ -16,7 +16,8 @@ namespace prySerna_IEFI
         {
             InitializeComponent();
         }
-        int IntentosFallidos = 0;
+      
+  int IntentosFallidos = 0;
         private void frmInicioSesión_Load(object sender, EventArgs e)
         {
             clsConexión conexion = new clsConexión();
@@ -36,6 +37,8 @@ namespace prySerna_IEFI
             {
                 //frmPrincipal principal = new frmPrincipal(idUsuario, Inicio.Usuario);
                 frmPrincipal principal = new frmPrincipal();
+                principal.UsuarioN=Inicio.Usuario;
+                principal.RolUsuario = Inicio.Rol;
                 principal.Show();
                 this.Hide();
             }
@@ -71,7 +74,6 @@ namespace prySerna_IEFI
             txtUsuario.Clear();
             txtContraseña.Clear();
         }
-
         public void ValidarDatos()
         {
             if (txtUsuario.Text != "" && txtContraseña.Text != "")

@@ -18,7 +18,7 @@ namespace prySerna_IEFI
             cadenaConexion = "Server=localhost;Database=TrabajoIEFI;Trusted_Connection=True;";
         }
 
-        public int Iniciar(clsInicioSesión Iniciar)
+       /* public int Iniciar(clsInicioSesión Iniciar)
         {
             int idUsuario = 0;
             try
@@ -45,6 +45,15 @@ namespace prySerna_IEFI
                         comandoU.Parameters.AddWithValue("@IdUsuario", idUsuario);
                         comandoU.ExecuteNonQuery();
 
+                        if (Iniciar.Usuario == "Administrador" && Iniciar.Contraseña == "45833499")
+                        {
+                            Iniciar.Rol = "administrador";
+                        }
+                        else
+                        {
+                            Iniciar.Rol = "usuario";
+                        }
+
                     }
                 }
 
@@ -55,9 +64,48 @@ namespace prySerna_IEFI
             }
             return idUsuario;
 
-        }
-       
+        *///}
+        public int Iniciar(clsInicioSesión Iniciar)
+        {
+            int idUsuario = 0;
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+                {
+                    conexion.Open();
 
+                    string query = "SELECT IdUsuario, Rol FROM Usuarios WHERE Usuario = @Usuario AND Contraseña = @Contraseña";
+                    SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@Usuario", Iniciar.Usuario);
+                    comando.Parameters.AddWithValue("@Contraseña", Iniciar.Contraseña);
+
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            idUsuario = reader.GetInt32(0); // IdUsuario
+                            Iniciar.Rol = reader.GetString(1); // Rol
+
+                            // Ahora actualizamos la última conexión
+                            reader.Close(); // Cerramos antes de lanzar nuevo comando
+
+                            string updateQuery = "UPDATE Usuarios SET UltimaConexion = @UltimaConexion WHERE IdUsuario = @IdUsuario";
+                            SqlCommand updateCommand = new SqlCommand(updateQuery, conexion);
+                            updateCommand.Parameters.AddWithValue("@UltimaConexion", DateTime.Now);
+                            updateCommand.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                            updateCommand.ExecuteNonQuery();
+                            ActualizarEstado(Iniciar.Usuario, "Activo");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en inicio de sesión: " + ex.Message);
+            }
+
+            return idUsuario;
+        }
 
         public int AgregarUsuario(clsInicioSesión Usuario)
         {
@@ -82,6 +130,7 @@ namespace prySerna_IEFI
                     comandoU.Parameters.AddWithValue("@UltimaConexion", DateTime.Now);
                     comandoU.Parameters.AddWithValue("@IdUsuario", nuevoIdUsuario);
                     comandoU.ExecuteNonQuery();
+                   
                 }
             }
             catch (Exception ex)
@@ -91,29 +140,67 @@ namespace prySerna_IEFI
 
             return nuevoIdUsuario;
         }
+        public void ActualizarEstado(string usuario, string estado)
+        {
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+                {
+                    conexion.Open();
+                    string query = "UPDATE Usuarios SET Estado = @Estado WHERE Usuario = @Usuario";
+                    SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@Estado", estado);
+                    comando.Parameters.AddWithValue("@Usuario", usuario);
+                    comando.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar el estado: " + ex.Message);
+            }
+        }
 
 
+       
+        public void GuardarUltimaConexion(string usuario, TimeSpan tiempoSesion)
+        {
+            using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+            {
+                conexion.Open();
 
+                // Obtener el tiempo total anterior
+                string query = "SELECT TiempoTotal FROM Usuarios WHERE Usuario = @Usuario";
+                SqlCommand comando = new SqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@Usuario", usuario);
 
+                object resultado = comando.ExecuteScalar();
+                TimeSpan tiempoTotalAnterior = TimeSpan.Zero;
 
+                if (resultado != DBNull.Value && resultado != null)
+                {
+                    tiempoTotalAnterior = (TimeSpan)resultado;
+                }
 
+                TimeSpan nuevoTiempoTotal = tiempoTotalAnterior + tiempoSesion;
 
+                // Actualizar: UltimaConexion, TiempoUltimaConexion y TiempoTotal
+                string queryUpdate = @"
+            UPDATE Usuarios 
+            SET 
+                UltimaConexion = @FechaActual,              -- Fecha y hora actual
+                TiempoUltimaConexion = @TiempoSesion,       -- Duración de esta sesión
+                TiempoTotal = @TiempoTotal                  -- Acumulado total
+            WHERE Usuario = @Usuario";
 
+                SqlCommand comandoA = new SqlCommand(queryUpdate, conexion);
+                comandoA.Parameters.AddWithValue("@FechaActual", DateTime.Now); // Aquí puedes cambiar a otra fecha si lo necesitas
+                comandoA.Parameters.AddWithValue("@TiempoSesion", tiempoSesion);
+                comandoA.Parameters.AddWithValue("@TiempoTotal", nuevoTiempoTotal);
+                comandoA.Parameters.AddWithValue("@Usuario", usuario);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                comandoA.ExecuteNonQuery();
+            }
+        }
 
 
 
@@ -121,7 +208,7 @@ namespace prySerna_IEFI
         {
             try
             {
-                string query = "SELECT IdUsuario, Usuario, Contraseña, FechaCreacion, UltimaConexion, TiempoUltimaConexion,TiempoTotal, Estado FROM Usuarios";
+                string query = "SELECT IdUsuario, Usuario, Contraseña, Rol, FechaCreacion, UltimaConexion, TiempoUltimaConexion,TiempoTotal, Estado FROM Usuarios";
 
                 using (SqlConnection conn = new SqlConnection(cadenaConexion))
                 using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))

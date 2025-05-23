@@ -16,5 +16,6 @@ namespace prySerna_IEFI
         public DateTime UltimaConexion { get; set; }        
         public TimeSpan TiempoUltimaConexion { get; set; }  
         public TimeSpan TiempoTotal { get; set; }
+        public string Rol {  get; set; }
     }
 }
