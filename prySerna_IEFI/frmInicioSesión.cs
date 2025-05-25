@@ -27,7 +27,7 @@ namespace prySerna_IEFI
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            clsInicioSesión Inicio = new clsInicioSesión();
+            clsUsuario Inicio = new clsUsuario();
             clsConexión conexión = new clsConexión();
             Inicio.Usuario = txtUsuario.Text;
             Inicio.Contraseña = txtContraseña.Text;
@@ -62,7 +62,7 @@ namespace prySerna_IEFI
             try
             {
                 clsConexión conexión = new clsConexión();
-                clsInicioSesión Inicio = new clsInicioSesión();
+                clsUsuario Inicio = new clsUsuario();
                 Inicio.Usuario = txtUsuario.Text;
                 Inicio.Contraseña = txtContraseña.Text;
                 conexión.AgregarUsuario(Inicio);

@@ -18,7 +18,7 @@ namespace prySerna_IEFI
             cadenaConexion = "Server=localhost;Database=TrabajoIEFI;Trusted_Connection=True;";
         }
 
-       /* public int Iniciar(clsInicioSesión Iniciar)
+       /* public int Iniciar(clsUsuario Iniciar)
         {
             int idUsuario = 0;
             try
@@ -65,7 +65,7 @@ namespace prySerna_IEFI
             return idUsuario;
 
         *///}
-        public int Iniciar(clsInicioSesión Iniciar)
+        public int Iniciar(clsUsuario Iniciar)
         {
             int idUsuario = 0;
             try
@@ -107,7 +107,7 @@ namespace prySerna_IEFI
             return idUsuario;
         }
 
-        public int AgregarUsuario(clsInicioSesión Usuario)
+        public int AgregarUsuario(clsUsuario Usuario)
         {
             int nuevoIdUsuario = 0;
             try
@@ -225,5 +225,105 @@ namespace prySerna_IEFI
             }
 
         }
+        public void Agregar(clsUsuario Usuario)
+        {
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+                {
+                    conexion.Open();
+                    string query = "INSERT INTO Usuarios (Usuario, Contraseña, Rol, FechaCreacion, UltimaConexion, TiempoUltimaConexion,TiempoTotal, Estado) " +
+                                   "VALUES (@Usuario, @Contraseña, @Rol, @FechaCreacion, @UltimaConexion, @TiempoUltimaConexion, @TiempoTotal, @Estado)";
+
+                    SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@Usuario", Usuario.Usuario);
+                    comando.Parameters.AddWithValue("@Contraseña", Usuario.Contraseña);
+                    comando.Parameters.AddWithValue("@Rol", Usuario.Rol);
+                    comando.Parameters.AddWithValue("@FechaCreacion", Usuario.FechaCreacion);
+                    comando.Parameters.AddWithValue("@UltimaConexion", Usuario.UltimaConexion);
+                    comando.Parameters.AddWithValue("@TiempoUltimaConexion", Usuario. TiempoUltimaConexion);
+                    comando.Parameters.AddWithValue("@TiempoTotal", Usuario.TiempoTotal);
+                    comando.Parameters.AddWithValue("@Estado", Usuario. Estado);
+                    comando.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar el usuario: " + ex.Message);
+            }
+        }
+
+        public void Modificar(clsUsuario Usuario)
+        {
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+                {
+                    conexion.Open();
+                    string query = "UPDATE Usuarios SET Usuario=@Usuario, Contraseña=@Contraseña, Rol= @Rol, FechaCreacion=@FechaCreacion, UltimaConexion=@UltimaConexion, TiempoUltimaConexion=@TiempoUltimaConexion,TiempoTotal=@TiempoTotal, Estado=@Estado WHERE IdUsuario=@IdUsuario ";
+                                
+                    SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@Usuario", Usuario.Usuario);
+                    comando.Parameters.AddWithValue("@Contraseña", Usuario.Contraseña);
+                    comando.Parameters.AddWithValue("@Rol", Usuario.Rol);
+                    comando.Parameters.AddWithValue("@FechaCreacion", Usuario.FechaCreacion);
+                    comando.Parameters.AddWithValue("@UltimaConexion", Usuario.UltimaConexion);
+                    comando.Parameters.AddWithValue("@TiempoUltimaConexion", Usuario.TiempoUltimaConexion);
+                    comando.Parameters.AddWithValue("@TiempoTotal", Usuario.TiempoTotal);
+                    comando.Parameters.AddWithValue("@Estado", Usuario.Estado);
+                    comando.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al modificar el usuario: " + ex.Message);
+            }
+        }
+        public void Eliminar(clsUsuario Usuario)
+        {
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+                {
+                    conexion.Open();
+                    string query = "DELETE FROM Usuarios WHERE Usuario=@Usuario";
+                    SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@Usuario", Usuario.Usuario);
+                  
+                    comando.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar el usuario: " + ex.Message);
+            }
+        }
+        public clsUsuario CargarSoloEsteUsuario(string nombreUsuario)
+        {
+            clsUsuario usuario = null;
+            using (SqlConnection conn = new SqlConnection(cadenaConexion))
+            {
+                string query = "SELECT * FROM Usuarios WHERE Usuario = @Usuario";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Usuario", nombreUsuario);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    usuario = new clsUsuario
+                    {
+                        Usuario = reader["Usuario"].ToString(),
+                        Contraseña = reader["Contraseña"].ToString(),
+                        // Otros campos si se necesitan
+                    };
+                }
+            }
+            return usuario;
+        }
+
+
+
+
+
     }
 }

@@ -22,5 +22,10 @@ namespace prySerna_IEFI
             clsConexión BD = new clsConexión();
             BD.CargarUsuarios(dgvAuditoria);
         }
+
+        private void frmAuditoria_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
     }
 }

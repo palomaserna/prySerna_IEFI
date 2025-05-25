@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAuditoria));
             this.dgvAuditoria = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAuditoria)).BeginInit();
             this.SuspendLayout();
@@ -35,7 +36,7 @@
             // dgvAuditoria
             // 
             this.dgvAuditoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAuditoria.Location = new System.Drawing.Point(70, 65);
+            this.dgvAuditoria.Location = new System.Drawing.Point(106, 114);
             this.dgvAuditoria.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvAuditoria.Name = "dgvAuditoria";
             this.dgvAuditoria.RowHeadersWidth = 62;
@@ -46,11 +47,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Controls.Add(this.dgvAuditoria);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmAuditoria";
             this.Text = "Auditoria";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAuditoria_FormClosing);
             this.Load += new System.EventHandler(this.frmAuditoria_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAuditoria)).EndInit();
             this.ResumeLayout(false);

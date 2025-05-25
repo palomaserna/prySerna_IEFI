@@ -25,32 +25,28 @@ namespace prySerna_IEFI
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             clsConexión BD=new clsConexión();
-            clsInicioSesión Iniciar=new clsInicioSesión();
+            clsUsuario Iniciar=new clsUsuario();
             if (RolUsuario == "Administrador")
             {
-                msAdministracion.Visible = true;
+                msAuditoria.Visible = true;
             }
             else
             {
-                msAdministracion.Visible=false;
+                msAuditoria.Visible=false;
             }
             lblUsuario.Text = $"Usuario conectado: {UsuarioN}";
             tmTiempo.Start();
             tmFecha.Start();
         }
 
-        private void msAuditoria_Click(object sender, EventArgs e)
-        {
-            frmAuditoria v=new frmAuditoria();
-            v.ShowDialog();
-        }
+       
 
         private void tmTiempo_Tick(object sender, EventArgs e)
         {
             tiempo++;
             int minutos = tiempo / 60;
             int segundos=tiempo % 60;
-            lblFecha.Text = $"Tiempo conectado: {minutos:D2}:{segundos:D2}";
+            lblContador.Text = $"Tiempo conectado: {minutos:D2}:{segundos:D2}";
         }
 
         
@@ -67,6 +63,18 @@ namespace prySerna_IEFI
         private void tmFecha_Tick(object sender, EventArgs e)
         {
             lblFecha.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        }
+
+        private void msAuditoria_Click(object sender, EventArgs e)
+        {
+            frmAuditoria v = new frmAuditoria();
+            v.ShowDialog();
+        }
+
+        private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGestiónUsuarios v = new frmGestiónUsuarios();
+            v.ShowDialog();
         }
     }
 }
