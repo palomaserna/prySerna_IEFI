@@ -49,14 +49,14 @@
             // msPrincipal
             // 
             this.msPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(141)))));
-            this.msPrincipal.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.msPrincipal.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.msPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tareasToolStripMenuItem,
             this.msAdministracion});
             this.msPrincipal.Location = new System.Drawing.Point(0, 0);
             this.msPrincipal.Name = "msPrincipal";
-            this.msPrincipal.Size = new System.Drawing.Size(1200, 33);
+            this.msPrincipal.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.msPrincipal.Size = new System.Drawing.Size(800, 24);
             this.msPrincipal.TabIndex = 0;
             this.msPrincipal.Text = "menuStrip1";
             // 
@@ -65,7 +65,7 @@
             this.tareasToolStripMenuItem.Font = new System.Drawing.Font("Impact", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tareasToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.tareasToolStripMenuItem.Name = "tareasToolStripMenuItem";
-            this.tareasToolStripMenuItem.Size = new System.Drawing.Size(82, 29);
+            this.tareasToolStripMenuItem.Size = new System.Drawing.Size(58, 22);
             this.tareasToolStripMenuItem.Text = "Tareas";
             // 
             // msAdministracion
@@ -76,7 +76,7 @@
             this.msAdministracion.Font = new System.Drawing.Font("Impact", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.msAdministracion.ForeColor = System.Drawing.Color.White;
             this.msAdministracion.Name = "msAdministracion";
-            this.msAdministracion.Size = new System.Drawing.Size(150, 29);
+            this.msAdministracion.Size = new System.Drawing.Size(107, 22);
             this.msAdministracion.Text = "Administración";
             // 
             // usuarioToolStripMenuItem
@@ -84,7 +84,7 @@
             this.usuarioToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(141)))));
             this.usuarioToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
-            this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.usuarioToolStripMenuItem.Text = "Usuario";
             this.usuarioToolStripMenuItem.Click += new System.EventHandler(this.usuarioToolStripMenuItem_Click);
             // 
@@ -93,7 +93,7 @@
             this.msAuditoria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(141)))));
             this.msAuditoria.ForeColor = System.Drawing.Color.White;
             this.msAuditoria.Name = "msAuditoria";
-            this.msAuditoria.Size = new System.Drawing.Size(270, 34);
+            this.msAuditoria.Size = new System.Drawing.Size(128, 22);
             this.msAuditoria.Text = "Auditoria";
             this.msAuditoria.Click += new System.EventHandler(this.msAuditoria_Click);
             // 
@@ -106,10 +106,9 @@
             this.toolStripStatusLabel2,
             this.lblFecha,
             this.lblContador});
-            this.ssUsuarioT.Location = new System.Drawing.Point(0, 663);
+            this.ssUsuarioT.Location = new System.Drawing.Point(0, 428);
             this.ssUsuarioT.Name = "ssUsuarioT";
-            this.ssUsuarioT.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
-            this.ssUsuarioT.Size = new System.Drawing.Size(1200, 29);
+            this.ssUsuarioT.Size = new System.Drawing.Size(800, 22);
             this.ssUsuarioT.TabIndex = 1;
             this.ssUsuarioT.Text = "statusStrip1";
             // 
@@ -117,32 +116,33 @@
             // 
             this.lblUsuario.Font = new System.Drawing.Font("Impact", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(22, 22);
+            this.lblUsuario.Size = new System.Drawing.Size(15, 17);
             this.lblUsuario.Text = "....";
             // 
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Font = new System.Drawing.Font("Impact", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(53, 22);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(36, 17);
             this.toolStripStatusLabel2.Text = "Fecha";
             // 
             // lblFecha
             // 
             this.lblFecha.Font = new System.Drawing.Font("Impact", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(19, 22);
+            this.lblFecha.Size = new System.Drawing.Size(13, 17);
             this.lblFecha.Text = "...";
             // 
             // lblContador
             // 
             this.lblContador.Font = new System.Drawing.Font("Impact", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContador.Name = "lblContador";
-            this.lblContador.Size = new System.Drawing.Size(19, 22);
+            this.lblContador.Size = new System.Drawing.Size(13, 17);
             this.lblContador.Text = "...";
             // 
             // tmTiempo
             // 
+            this.tmTiempo.Interval = 1000;
             this.tmTiempo.Tick += new System.EventHandler(this.tmTiempo_Tick);
             // 
             // tmFecha
@@ -151,16 +151,15 @@
             // 
             // frmPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1200, 692);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.ssUsuarioT);
             this.Controls.Add(this.msPrincipal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.msPrincipal;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmPrincipal";
             this.Text = "Principal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
