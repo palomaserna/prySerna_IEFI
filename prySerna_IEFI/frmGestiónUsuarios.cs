@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -68,6 +69,7 @@ namespace prySerna_IEFI
                     Usuario.Direccion=txtDirección.Text;
                     Usuario.Dni=txtDni.Text;
                     Usuario.Telefono=txtTeléfono.Text;
+                   // contacto.Telefono = int.Parse(txtTeléfono.Text);
                     Usuario.Gmail=txtGmail.Text;
                     BD.Agregar(Usuario);
                     BD.CargarGestion(dgvUsuarios);
