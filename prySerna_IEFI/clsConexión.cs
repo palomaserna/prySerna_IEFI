@@ -18,53 +18,7 @@ namespace prySerna_IEFI
             cadenaConexion = "Server=localhost;Database=TrabajoIEFI;Trusted_Connection=True;";
         }
 
-       /* public int Iniciar(clsUsuario Iniciar)
-        {
-            int idUsuario = 0;
-            try
-            {
-                using (SqlConnection conexion = new SqlConnection(cadenaConexion))
-                {
-                    conexion.Open();
-                    //string query = " SELECT COUNT (*) FROM Usuarios WHERE Usuario = @Usuario AND Contraseña = @Contraseña";
-                    string query = "SELECT IdUsuario FROM Usuarios WHERE Usuario = @Usuario AND Contraseña = @Contraseña";
-
-                    SqlCommand comando = new SqlCommand(query, conexion);
-                    comando.Parameters.AddWithValue("@Usuario", Iniciar.Usuario);
-                    comando.Parameters.AddWithValue("@Contraseña", Iniciar.Contraseña);
-
-                    object resultado = comando.ExecuteScalar();
-                    if(resultado != null)
-                    {
-                        idUsuario = Convert.ToInt32(resultado);
-
-                        // Actualizar UltimaConexion a ahora
-                        string queryU = "UPDATE Usuarios SET UltimaConexion = @UltimaConexion WHERE IdUsuario = @IdUsuario";
-                        SqlCommand comandoU = new SqlCommand(queryU, conexion);
-                        comandoU.Parameters.AddWithValue("@UltimaConexion", DateTime.Now);
-                        comandoU.Parameters.AddWithValue("@IdUsuario", idUsuario);
-                        comandoU.ExecuteNonQuery();
-
-                        if (Iniciar.Usuario == "Administrador" && Iniciar.Contraseña == "45833499")
-                        {
-                            Iniciar.Rol = "administrador";
-                        }
-                        else
-                        {
-                            Iniciar.Rol = "usuario";
-                        }
-
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error en inicio de sesión: " + ex.Message);
-            }
-            return idUsuario;
-
-        *///}
+       
         public int Iniciar(clsUsuario Iniciar)
         {
             int idUsuario = 0;
@@ -225,6 +179,28 @@ namespace prySerna_IEFI
             }
 
         }
+        public void CargarGestion(DataGridView dgv)
+        {
+            try
+            {
+                string query = "SELECT IdUsuario, Usuario, Contraseña, Rol, Direccion, Dni, Telefono, Gmail FROM Usuarios";
+
+                using (SqlConnection conn = new SqlConnection(cadenaConexion))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
+                {
+                    DataTable tabla = new DataTable();
+                    adapter.Fill(tabla);
+                    dgv.DataSource = tabla;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los datos: " + ex.Message);
+            }
+
+        }
+
         public void Agregar(clsUsuario Usuario)
         {
             try
@@ -232,18 +208,18 @@ namespace prySerna_IEFI
                 using (SqlConnection conexion = new SqlConnection(cadenaConexion))
                 {
                     conexion.Open();
-                    string query = "INSERT INTO Usuarios (Usuario, Contraseña, Rol, FechaCreacion, UltimaConexion, TiempoUltimaConexion,TiempoTotal, Estado) " +
-                                   "VALUES (@Usuario, @Contraseña, @Rol, @FechaCreacion, @UltimaConexion, @TiempoUltimaConexion, @TiempoTotal, @Estado)";
+                    string query = "INSERT INTO Usuarios (Usuario, Contraseña, Rol, Direccion, Dni, Telefono, Gmail) " +
+                                   "VALUES (@Usuario, @Contraseña, @Rol, @Direccion, @Dni, @Telefono, @Gmail)";
 
                     SqlCommand comando = new SqlCommand(query, conexion);
                     comando.Parameters.AddWithValue("@Usuario", Usuario.Usuario);
                     comando.Parameters.AddWithValue("@Contraseña", Usuario.Contraseña);
                     comando.Parameters.AddWithValue("@Rol", Usuario.Rol);
-                    comando.Parameters.AddWithValue("@FechaCreacion", Usuario.FechaCreacion);
-                    comando.Parameters.AddWithValue("@UltimaConexion", Usuario.UltimaConexion);
-                    comando.Parameters.AddWithValue("@TiempoUltimaConexion", Usuario. TiempoUltimaConexion);
-                    comando.Parameters.AddWithValue("@TiempoTotal", Usuario.TiempoTotal);
-                    comando.Parameters.AddWithValue("@Estado", Usuario. Estado);
+                    comando.Parameters.AddWithValue("@Direccion", Usuario.Direccion);
+                    comando.Parameters.AddWithValue("@Dni", Usuario.Dni);
+                    comando.Parameters.AddWithValue("@Telefono", Usuario.Telefono);
+                    comando.Parameters.AddWithValue("@Gmail", Usuario.Gmail);
+
                     comando.ExecuteNonQuery();
                 }
             }
@@ -260,17 +236,17 @@ namespace prySerna_IEFI
                 using (SqlConnection conexion = new SqlConnection(cadenaConexion))
                 {
                     conexion.Open();
-                    string query = "UPDATE Usuarios SET Usuario=@Usuario, Contraseña=@Contraseña, Rol= @Rol, FechaCreacion=@FechaCreacion, UltimaConexion=@UltimaConexion, TiempoUltimaConexion=@TiempoUltimaConexion,TiempoTotal=@TiempoTotal, Estado=@Estado WHERE IdUsuario=@IdUsuario ";
+                    string query = "UPDATE Usuarios SET Usuario=@Usuario, Contraseña=@Contraseña, Rol= @Rol, Direccion= @Direccion, Dni= @Dni, Telefono= @Telefono, Gmail= @Gmail WHERE IdUsuario=@IdUsuario ";
                                 
                     SqlCommand comando = new SqlCommand(query, conexion);
                     comando.Parameters.AddWithValue("@Usuario", Usuario.Usuario);
                     comando.Parameters.AddWithValue("@Contraseña", Usuario.Contraseña);
                     comando.Parameters.AddWithValue("@Rol", Usuario.Rol);
-                    comando.Parameters.AddWithValue("@FechaCreacion", Usuario.FechaCreacion);
-                    comando.Parameters.AddWithValue("@UltimaConexion", Usuario.UltimaConexion);
-                    comando.Parameters.AddWithValue("@TiempoUltimaConexion", Usuario.TiempoUltimaConexion);
-                    comando.Parameters.AddWithValue("@TiempoTotal", Usuario.TiempoTotal);
-                    comando.Parameters.AddWithValue("@Estado", Usuario.Estado);
+                    comando.Parameters.AddWithValue("@Direccion", Usuario.Direccion);
+                    comando.Parameters.AddWithValue("@Dni", Usuario.Dni);
+                    comando.Parameters.AddWithValue("@Telefono", Usuario.Telefono);
+                    comando.Parameters.AddWithValue("@Gmail", Usuario.Gmail);
+                    
                     comando.ExecuteNonQuery();
                 }
             }
@@ -298,7 +274,7 @@ namespace prySerna_IEFI
                 MessageBox.Show("Error al eliminar el usuario: " + ex.Message);
             }
         }
-        public clsUsuario CargarSoloEsteUsuario(string nombreUsuario)
+       /* public clsUsuario CargarSoloEsteUsuario(string nombreUsuario)
         {
             clsUsuario usuario = null;
             using (SqlConnection conn = new SqlConnection(cadenaConexion))
@@ -319,7 +295,7 @@ namespace prySerna_IEFI
                 }
             }
             return usuario;
-        }
+        *///}
 
 
 

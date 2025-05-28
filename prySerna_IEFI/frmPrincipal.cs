@@ -28,11 +28,11 @@ namespace prySerna_IEFI
             clsUsuario Iniciar=new clsUsuario();
             if (RolUsuario == "Administrador")
             {
-                msAuditoria.Visible = true;
+                msAdministracion.Visible = true;
             }
             else
             {
-                msAuditoria.Visible=false;
+                msAdministracion.Visible=false;
             }
             lblUsuario.Text = $"Usuario conectado: {UsuarioN}";
             tmTiempo.Start();

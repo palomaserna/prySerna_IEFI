@@ -13,8 +13,8 @@ namespace prySerna_IEFI
 {
     public partial class frmGestiónUsuarios : Form
     {
-        public string RolUsuario {  get; set; }
-        public string UsuarioActual { get; set; }
+       // public string RolUsuario {  get; set; }
+        //public string UsuarioActual { get; set; }
         public frmGestiónUsuarios()
         {
             InitializeComponent();
@@ -25,8 +25,8 @@ namespace prySerna_IEFI
             
 
             clsConexión BD = new clsConexión();
-            BD.CargarUsuarios(dgvUsuarios);
-            if (RolUsuario == "Usuario")
+            BD.CargarGestion(dgvUsuarios);
+           /* if (RolUsuario == "Usuario")
             {
                
                 txtRol.Enabled = false;
@@ -50,7 +50,7 @@ namespace prySerna_IEFI
             else if (RolUsuario == "Administrador")
             {
                 BD.CargarUsuarios(dgvUsuarios);
-            }
+            *///}
 
         }
 
@@ -61,16 +61,16 @@ namespace prySerna_IEFI
                 clsConexión BD = new clsConexión();
                 clsUsuario Usuario = new clsUsuario();
                 {
+                    Usuario.IdUsuario = Convert.ToInt32(nmCodigo.Value);
                     Usuario.Usuario = txtUsuario.Text;
                     Usuario.Contraseña = txtContraseña.Text;
                     Usuario.Rol = txtRol.Text;
-                    Usuario.Estado = txtEstado.Text;
-                    Usuario.FechaCreacion = dtFechaC.Value;
-                    Usuario.UltimaConexion = dtUltimaC.Value;
-                    Usuario.TiempoUltimaConexion = TimeSpan.Parse(mskTiempoU.Text);
-                    Usuario.TiempoTotal=TimeSpan.Parse(mskTiempoTotal.Text);
+                    Usuario.Direccion=txtDirección.Text;
+                    Usuario.Dni=txtDni.Text;
+                    Usuario.Telefono=txtTeléfono.Text;
+                    Usuario.Gmail=txtGmail.Text;
                     BD.Agregar(Usuario);
-                    BD.CargarUsuarios(dgvUsuarios);
+                    BD.CargarGestion(dgvUsuarios);
                 };
             } catch (Exception ex)
             {
@@ -85,17 +85,17 @@ namespace prySerna_IEFI
                 clsConexión BD = new clsConexión();
                 clsUsuario Usuario = new clsUsuario();
                 {
+                    Usuario.IdUsuario = Convert.ToInt32(nmCodigo.Value);
                     Usuario.Usuario = txtUsuario.Text;
                     Usuario.Contraseña = txtContraseña.Text;
                     Usuario.Rol = txtRol.Text;
-                    Usuario.Estado = txtEstado.Text;
-                    Usuario.FechaCreacion = dtFechaC.Value;
-                    Usuario.UltimaConexion = dtUltimaC.Value;
-                    Usuario.TiempoUltimaConexion = TimeSpan.Parse(mskTiempoU.Text);
-                    Usuario.TiempoTotal = TimeSpan.Parse(mskTiempoTotal.Text);
+                    Usuario.Direccion = txtDirección.Text;
+                    Usuario.Dni = txtDni.Text;
+                    Usuario.Telefono = txtTeléfono.Text;
+                    Usuario.Gmail = txtGmail.Text;
                     BD.Modificar(Usuario);
-                    BD.CargarUsuarios(dgvUsuarios);
-                    if (RolUsuario == "Usuario")
+                    BD.CargarGestion(dgvUsuarios);
+                    /*if (RolUsuario == "Usuario")
                     {
                         Usuario.Rol = null; // o no se asigna
                         Usuario.Estado = null;
@@ -103,7 +103,7 @@ namespace prySerna_IEFI
                         Usuario.UltimaConexion = DateTime.MinValue;
                         Usuario.TiempoUltimaConexion = TimeSpan.Zero;
                         Usuario.TiempoTotal = TimeSpan.Zero;
-                    }
+                    *///}
                 };
             }
             catch (Exception ex)
@@ -121,16 +121,16 @@ namespace prySerna_IEFI
                 clsConexión BD = new clsConexión();
                 clsUsuario Usuario = new clsUsuario();
                 {
+                    Usuario.IdUsuario=Convert.ToInt32(nmCodigo.Value);
                     Usuario.Usuario = txtUsuario.Text;
                     Usuario.Contraseña = txtContraseña.Text;
                     Usuario.Rol = txtRol.Text;
-                    Usuario.Estado = txtEstado.Text;
-                    Usuario.FechaCreacion = dtFechaC.Value;
-                    Usuario.UltimaConexion = dtUltimaC.Value;
-                    Usuario.TiempoUltimaConexion = TimeSpan.Parse(mskTiempoU.Text);
-                    Usuario.TiempoTotal = TimeSpan.Parse(mskTiempoTotal.Text);
+                    Usuario.Direccion = txtDirección.Text;
+                    Usuario.Dni = txtDni.Text;
+                    Usuario.Telefono = txtTeléfono.Text;
+                    Usuario.Gmail = txtGmail.Text;
                     BD.Eliminar(Usuario);
-                    BD.CargarUsuarios(dgvUsuarios);
+                    BD.CargarGestion(dgvUsuarios);
                 };
             }
             catch (Exception ex)
