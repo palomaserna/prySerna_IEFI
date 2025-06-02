@@ -42,6 +42,7 @@
             this.lblContador = new System.Windows.Forms.ToolStripStatusLabel();
             this.tmTiempo = new System.Windows.Forms.Timer(this.components);
             this.tmFecha = new System.Windows.Forms.Timer(this.components);
+            this.registrarTareaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msPrincipal.SuspendLayout();
             this.ssUsuarioT.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +63,8 @@
             // 
             // tareasToolStripMenuItem
             // 
+            this.tareasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.registrarTareaToolStripMenuItem});
             this.tareasToolStripMenuItem.Font = new System.Drawing.Font("Impact", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tareasToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.tareasToolStripMenuItem.Name = "tareasToolStripMenuItem";
@@ -149,6 +152,12 @@
             // 
             this.tmFecha.Tick += new System.EventHandler(this.tmFecha_Tick);
             // 
+            // registrarTareaToolStripMenuItem
+            // 
+            this.registrarTareaToolStripMenuItem.Name = "registrarTareaToolStripMenuItem";
+            this.registrarTareaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.registrarTareaToolStripMenuItem.Text = "Registrar Tarea";
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -188,5 +197,6 @@
         private System.Windows.Forms.ToolStripStatusLabel lblFecha;
         private System.Windows.Forms.ToolStripStatusLabel lblContador;
         private System.Windows.Forms.Timer tmFecha;
+        private System.Windows.Forms.ToolStripMenuItem registrarTareaToolStripMenuItem;
     }
 }

@@ -168,6 +168,7 @@ namespace prySerna_IEFI
                 txtTeléfono.Text = fila.Cells["Telefono"].Value.ToString();
                 txtGmail.Text = fila.Cells["Gmail"].Value.ToString();
                 cmbEstado.SelectedItem = fila.Cells["Estado"].Value.ToString();
+                //tiempo
             }
         }
     }
