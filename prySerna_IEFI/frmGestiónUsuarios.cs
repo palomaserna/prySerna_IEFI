@@ -65,12 +65,14 @@ namespace prySerna_IEFI
                     Usuario.IdUsuario = Convert.ToInt32(nmCodigo.Value);
                     Usuario.Usuario = txtUsuario.Text;
                     Usuario.Contraseña = txtContraseña.Text;
-                    Usuario.Rol = txtRol.Text;
+                    Usuario.Rol = cmbRol.Text;
                     Usuario.Direccion=txtDirección.Text;
-                    Usuario.Dni=txtDni.Text;
-                    Usuario.Telefono=txtTeléfono.Text;
-                   // contacto.Telefono = int.Parse(txtTeléfono.Text);
+                    Usuario.Dni=int.Parse(txtDni.Text);
+                   
+                   Usuario.Telefono = int.Parse(txtTeléfono.Text);
                     Usuario.Gmail=txtGmail.Text;
+                    Usuario.Estado=cmbEstado.Text;
+                    Usuario.FechaCreacion = DateTime.Parse(mkFecha.Text);
                     BD.Agregar(Usuario);
                     BD.CargarGestion(dgvUsuarios);
                 };
@@ -90,11 +92,14 @@ namespace prySerna_IEFI
                     Usuario.IdUsuario = Convert.ToInt32(nmCodigo.Value);
                     Usuario.Usuario = txtUsuario.Text;
                     Usuario.Contraseña = txtContraseña.Text;
-                    Usuario.Rol = txtRol.Text;
+                    Usuario.Rol = cmbRol.Text;
                     Usuario.Direccion = txtDirección.Text;
-                    Usuario.Dni = txtDni.Text;
-                    Usuario.Telefono = txtTeléfono.Text;
+                    Usuario.Dni = int.Parse(txtDni.Text);
+                    
+                    Usuario.Telefono = int.Parse(txtTeléfono.Text);
                     Usuario.Gmail = txtGmail.Text;
+                    Usuario.Estado = cmbEstado.Text;
+                    Usuario.FechaCreacion = DateTime.Parse(mkFecha.Text);
                     BD.Modificar(Usuario);
                     BD.CargarGestion(dgvUsuarios);
                     /*if (RolUsuario == "Usuario")
@@ -126,11 +131,13 @@ namespace prySerna_IEFI
                     Usuario.IdUsuario=Convert.ToInt32(nmCodigo.Value);
                     Usuario.Usuario = txtUsuario.Text;
                     Usuario.Contraseña = txtContraseña.Text;
-                    Usuario.Rol = txtRol.Text;
+                    Usuario.Rol = cmbRol.Text;
                     Usuario.Direccion = txtDirección.Text;
-                    Usuario.Dni = txtDni.Text;
-                    Usuario.Telefono = txtTeléfono.Text;
+                    Usuario.Dni =   int.Parse(txtDni.Text);
+                    Usuario.Telefono = int.Parse(txtTeléfono.Text);
                     Usuario.Gmail = txtGmail.Text;
+                    Usuario.Estado = cmbEstado.Text;
+                    Usuario.FechaCreacion = DateTime.Parse(mkFecha.Text);
                     BD.Eliminar(Usuario);
                     BD.CargarGestion(dgvUsuarios);
                 };

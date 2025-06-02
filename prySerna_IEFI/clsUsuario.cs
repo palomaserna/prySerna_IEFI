@@ -13,8 +13,8 @@ namespace prySerna_IEFI
         public string Contraseña { get; set; }
         public string Rol { get; set; }
         public string Direccion { get; set; }
-        public string Dni { get; set; }
-        public string Telefono { get; set; }
+        public long Dni { get; set; }
+        public long Telefono { get; set; }
         public string Gmail { get; set; }
         public DateTime FechaCreacion { get; set; }
         public DateTime UltimaConexion { get; set; }

@@ -35,10 +35,16 @@
             this.lblUsuario = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.grpUsuario = new System.Windows.Forms.GroupBox();
+            this.cmbEstado = new System.Windows.Forms.ComboBox();
+            this.lblEstado = new System.Windows.Forms.Label();
+            this.mkFecha = new System.Windows.Forms.MaskedTextBox();
+            this.lblFecha = new System.Windows.Forms.Label();
+            this.cmbRol = new System.Windows.Forms.ComboBox();
             this.nmCodigo = new System.Windows.Forms.NumericUpDown();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.txtGmail = new System.Windows.Forms.TextBox();
             this.lblGmail = new System.Windows.Forms.Label();
+            this.txtTeléfono = new System.Windows.Forms.TextBox();
             this.lblTeléfono = new System.Windows.Forms.Label();
             this.txtDni = new System.Windows.Forms.TextBox();
             this.lblDni = new System.Windows.Forms.Label();
@@ -48,12 +54,6 @@
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.lblContraseña = new System.Windows.Forms.Label();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
-            this.txtTeléfono = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.lblFecha = new System.Windows.Forms.Label();
-            this.mkFecha = new System.Windows.Forms.MaskedTextBox();
-            this.lblEstado = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.grpUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmCodigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
@@ -66,7 +66,7 @@
             this.btnAgregar.Font = new System.Drawing.Font("Impact", 10F);
             this.btnAgregar.ForeColor = System.Drawing.Color.White;
             this.btnAgregar.Location = new System.Drawing.Point(531, 22);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(68, 32);
             this.btnAgregar.TabIndex = 0;
@@ -81,7 +81,7 @@
             this.btnModificar.Font = new System.Drawing.Font("Impact", 10F);
             this.btnModificar.ForeColor = System.Drawing.Color.White;
             this.btnModificar.Location = new System.Drawing.Point(531, 82);
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(68, 32);
             this.btnModificar.TabIndex = 1;
@@ -96,7 +96,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Impact", 10F);
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.Location = new System.Drawing.Point(531, 143);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(68, 32);
             this.btnEliminar.TabIndex = 2;
@@ -118,7 +118,7 @@
             // txtUsuario
             // 
             this.txtUsuario.Location = new System.Drawing.Point(63, 69);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(81, 22);
             this.txtUsuario.TabIndex = 4;
@@ -126,11 +126,11 @@
             // grpUsuario
             // 
             this.grpUsuario.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("grpUsuario.BackgroundImage")));
-            this.grpUsuario.Controls.Add(this.comboBox2);
+            this.grpUsuario.Controls.Add(this.cmbEstado);
             this.grpUsuario.Controls.Add(this.lblEstado);
             this.grpUsuario.Controls.Add(this.mkFecha);
             this.grpUsuario.Controls.Add(this.lblFecha);
-            this.grpUsuario.Controls.Add(this.comboBox1);
+            this.grpUsuario.Controls.Add(this.cmbRol);
             this.grpUsuario.Controls.Add(this.nmCodigo);
             this.grpUsuario.Controls.Add(this.lblCodigo);
             this.grpUsuario.Controls.Add(this.txtGmail);
@@ -152,18 +152,71 @@
             this.grpUsuario.Font = new System.Drawing.Font("Impact", 9F);
             this.grpUsuario.ForeColor = System.Drawing.Color.White;
             this.grpUsuario.Location = new System.Drawing.Point(25, 30);
-            this.grpUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.grpUsuario.Name = "grpUsuario";
-            this.grpUsuario.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpUsuario.Padding = new System.Windows.Forms.Padding(2);
             this.grpUsuario.Size = new System.Drawing.Size(610, 194);
             this.grpUsuario.TabIndex = 5;
             this.grpUsuario.TabStop = false;
             this.grpUsuario.Text = "Usuario";
             // 
+            // cmbEstado
+            // 
+            this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.cmbEstado.Location = new System.Drawing.Point(423, 67);
+            this.cmbEstado.Name = "cmbEstado";
+            this.cmbEstado.Size = new System.Drawing.Size(81, 24);
+            this.cmbEstado.TabIndex = 31;
+            // 
+            // lblEstado
+            // 
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.BackColor = System.Drawing.Color.Transparent;
+            this.lblEstado.Location = new System.Drawing.Point(368, 72);
+            this.lblEstado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(40, 16);
+            this.lblEstado.TabIndex = 30;
+            this.lblEstado.Text = "Estado";
+            // 
+            // mkFecha
+            // 
+            this.mkFecha.Location = new System.Drawing.Point(425, 22);
+            this.mkFecha.Mask = "00/00/0000";
+            this.mkFecha.Name = "mkFecha";
+            this.mkFecha.Size = new System.Drawing.Size(79, 22);
+            this.mkFecha.TabIndex = 29;
+            this.mkFecha.ValidatingType = typeof(System.DateTime);
+            // 
+            // lblFecha
+            // 
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.BackColor = System.Drawing.Color.Transparent;
+            this.lblFecha.Location = new System.Drawing.Point(324, 25);
+            this.lblFecha.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(96, 16);
+            this.lblFecha.TabIndex = 28;
+            this.lblFecha.Text = "Fecha de Creación";
+            // 
+            // cmbRol
+            // 
+            this.cmbRol.FormattingEnabled = true;
+            this.cmbRol.Items.AddRange(new object[] {
+            "Administrador",
+            "Usuario"});
+            this.cmbRol.Location = new System.Drawing.Point(64, 155);
+            this.cmbRol.Name = "cmbRol";
+            this.cmbRol.Size = new System.Drawing.Size(81, 24);
+            this.cmbRol.TabIndex = 27;
+            // 
             // nmCodigo
             // 
             this.nmCodigo.Location = new System.Drawing.Point(64, 26);
-            this.nmCodigo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nmCodigo.Margin = new System.Windows.Forms.Padding(2);
             this.nmCodigo.Name = "nmCodigo";
             this.nmCodigo.Size = new System.Drawing.Size(80, 22);
             this.nmCodigo.TabIndex = 26;
@@ -182,7 +235,7 @@
             // txtGmail
             // 
             this.txtGmail.Location = new System.Drawing.Point(225, 153);
-            this.txtGmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtGmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtGmail.Name = "txtGmail";
             this.txtGmail.Size = new System.Drawing.Size(81, 22);
             this.txtGmail.TabIndex = 24;
@@ -198,6 +251,14 @@
             this.lblGmail.TabIndex = 23;
             this.lblGmail.Text = "Gmail";
             // 
+            // txtTeléfono
+            // 
+            this.txtTeléfono.Location = new System.Drawing.Point(225, 111);
+            this.txtTeléfono.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTeléfono.Name = "txtTeléfono";
+            this.txtTeléfono.Size = new System.Drawing.Size(81, 22);
+            this.txtTeléfono.TabIndex = 22;
+            // 
             // lblTeléfono
             // 
             this.lblTeléfono.AutoSize = true;
@@ -212,7 +273,7 @@
             // txtDni
             // 
             this.txtDni.Location = new System.Drawing.Point(225, 66);
-            this.txtDni.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDni.Margin = new System.Windows.Forms.Padding(2);
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(81, 22);
             this.txtDni.TabIndex = 20;
@@ -231,7 +292,7 @@
             // txtDirección
             // 
             this.txtDirección.Location = new System.Drawing.Point(225, 22);
-            this.txtDirección.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDirección.Margin = new System.Windows.Forms.Padding(2);
             this.txtDirección.Name = "txtDirección";
             this.txtDirección.Size = new System.Drawing.Size(81, 22);
             this.txtDirección.TabIndex = 18;
@@ -261,7 +322,7 @@
             // txtContraseña
             // 
             this.txtContraseña.Location = new System.Drawing.Point(64, 117);
-            this.txtContraseña.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtContraseña.Margin = new System.Windows.Forms.Padding(2);
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.Size = new System.Drawing.Size(81, 22);
             this.txtContraseña.TabIndex = 6;
@@ -286,67 +347,6 @@
             this.dgvUsuarios.Size = new System.Drawing.Size(610, 216);
             this.dgvUsuarios.TabIndex = 6;
             // 
-            // txtTeléfono
-            // 
-            this.txtTeléfono.Location = new System.Drawing.Point(225, 111);
-            this.txtTeléfono.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTeléfono.Name = "txtTeléfono";
-            this.txtTeléfono.Size = new System.Drawing.Size(81, 22);
-            this.txtTeléfono.TabIndex = 22;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Administrador",
-            "Usuario"});
-            this.comboBox1.Location = new System.Drawing.Point(64, 155);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(81, 24);
-            this.comboBox1.TabIndex = 27;
-            // 
-            // lblFecha
-            // 
-            this.lblFecha.AutoSize = true;
-            this.lblFecha.BackColor = System.Drawing.Color.Transparent;
-            this.lblFecha.Location = new System.Drawing.Point(324, 25);
-            this.lblFecha.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(96, 16);
-            this.lblFecha.TabIndex = 28;
-            this.lblFecha.Text = "Fecha de Creación";
-            // 
-            // mkFecha
-            // 
-            this.mkFecha.Location = new System.Drawing.Point(425, 22);
-            this.mkFecha.Mask = "00/00/0000";
-            this.mkFecha.Name = "mkFecha";
-            this.mkFecha.Size = new System.Drawing.Size(79, 22);
-            this.mkFecha.TabIndex = 29;
-            this.mkFecha.ValidatingType = typeof(System.DateTime);
-            // 
-            // lblEstado
-            // 
-            this.lblEstado.AutoSize = true;
-            this.lblEstado.BackColor = System.Drawing.Color.Transparent;
-            this.lblEstado.Location = new System.Drawing.Point(368, 72);
-            this.lblEstado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(40, 16);
-            this.lblEstado.TabIndex = 30;
-            this.lblEstado.Text = "Estado";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
-            this.comboBox2.Location = new System.Drawing.Point(423, 67);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(81, 24);
-            this.comboBox2.TabIndex = 31;
-            // 
             // frmGestiónUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -357,7 +357,7 @@
             this.Controls.Add(this.dgvUsuarios);
             this.Controls.Add(this.grpUsuario);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmGestiónUsuarios";
             this.Text = "GestiónUsuarios";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmGestiónUsuarios_FormClosing);
@@ -394,8 +394,8 @@
         private System.Windows.Forms.TextBox txtTeléfono;
         private System.Windows.Forms.MaskedTextBox mkFecha;
         private System.Windows.Forms.Label lblFecha;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbRol;
         private System.Windows.Forms.Label lblEstado;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbEstado;
     }
 }

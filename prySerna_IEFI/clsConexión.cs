@@ -183,7 +183,7 @@ namespace prySerna_IEFI
         {
             try
             {
-                string query = "SELECT IdUsuario, Usuario, Contraseña, Rol, Direccion, Dni, Telefono, Gmail FROM Usuarios";
+                string query = "SELECT IdUsuario, Usuario, Contraseña, Rol, Direccion, Dni, Telefono, Gmail, Estado, FechaCreacion  FROM Usuarios";
 
                 using (SqlConnection conn = new SqlConnection(cadenaConexion))
                 using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
@@ -208,8 +208,8 @@ namespace prySerna_IEFI
                 using (SqlConnection conexion = new SqlConnection(cadenaConexion))
                 {
                     conexion.Open();
-                    string query = "INSERT INTO Usuarios (Usuario, Contraseña, Rol, Direccion, Dni, Telefono, Gmail) " +
-                                   "VALUES (@Usuario, @Contraseña, @Rol, @Direccion, @Dni, @Telefono, @Gmail)";
+                    string query = "INSERT INTO Usuarios (Usuario, Contraseña, Rol, Direccion, Dni, Telefono, Gmail, Estado, FechaCreacion) " +
+                                   "VALUES (@Usuario, @Contraseña, @Rol, @Direccion, @Dni, @Telefono, @Gmail, @Estado, @FechaCreacion)";
 
                     SqlCommand comando = new SqlCommand(query, conexion);
                     comando.Parameters.AddWithValue("@Usuario", Usuario.Usuario);
@@ -236,7 +236,7 @@ namespace prySerna_IEFI
                 using (SqlConnection conexion = new SqlConnection(cadenaConexion))
                 {
                     conexion.Open();
-                    string query = "UPDATE Usuarios SET Usuario=@Usuario, Contraseña=@Contraseña, Rol= @Rol, Direccion= @Direccion, Dni= @Dni, Telefono= @Telefono, Gmail= @Gmail WHERE IdUsuario=@IdUsuario ";
+                    string query = "UPDATE Usuarios SET Usuario=@Usuario, Contraseña=@Contraseña, Rol= @Rol, Direccion= @Direccion, Dni= @Dni, Telefono= @Telefono, Gmail= @Gmail, Estado=@Estado, FechaCreacion=@FechaCreacion WHERE IdUsuario=@IdUsuario ";
                                 
                     SqlCommand comando = new SqlCommand(query, conexion);
                     comando.Parameters.AddWithValue("@Usuario", Usuario.Usuario);
