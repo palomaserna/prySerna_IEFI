@@ -152,5 +152,23 @@ namespace prySerna_IEFI
         {
 
         }
+
+        private void dgvUsuarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+
+                DataGridViewRow fila = dgvUsuarios.Rows[e.RowIndex];
+                nmCodigo.Value = Convert.ToInt32(fila.Cells["Codigo"].Value);
+                txtUsuario.Text = fila.Cells["Usuario"].Value.ToString();
+                txtContraseña.Text = fila.Cells["Contraseña"].Value.ToString();
+                cmbRol.SelectedItem = fila.Cells["Rol"].Value.ToString();
+                txtDirección.Text = fila.Cells["Direccion"].Value.ToString();
+                txtDni.Text = fila.Cells["Dni"].Value.ToString();
+                txtTeléfono.Text = fila.Cells["Telefono"].Value.ToString();
+                txtGmail.Text = fila.Cells["Gmail"].Value.ToString();
+                cmbEstado.SelectedItem = fila.Cells["Estado"].Value.ToString();
+            }
+        }
     }
 }

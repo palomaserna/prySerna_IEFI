@@ -346,6 +346,7 @@
             this.dgvUsuarios.RowHeadersWidth = 62;
             this.dgvUsuarios.Size = new System.Drawing.Size(610, 216);
             this.dgvUsuarios.TabIndex = 6;
+            this.dgvUsuarios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellDoubleClick);
             // 
             // frmGestiónUsuarios
             // 
