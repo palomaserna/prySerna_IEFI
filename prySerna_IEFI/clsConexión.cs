@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq.Expressions;
 
 namespace prySerna_IEFI
 {
@@ -297,39 +298,53 @@ namespace prySerna_IEFI
              return usuario;
          *///}
 
-        public void AgregarTarea(clsTarea Tarea)
+        public void AgregarTareaTipo(string nombre)
         {
             try
             {
                 using (SqlConnection conexion = new SqlConnection(cadenaConexion))
                 {
                     conexion.Open();
-                    string query = "INSERT INTO Tareas (IdTarea, IdUsuario, Usuario, Fecha, Tarea, Lugar) " +
-                                   "VALUES (@IdTarea, @IdUsuario, @Usuario, @Fecha, @Tarea, @Lugar)";
-
+                    string query = "INSERT INTO TareasTipo (Nombre) VALUES (@Nombre)";
                     SqlCommand comando = new SqlCommand(query, conexion);
-                    comando.Parameters.AddWithValue("@IdTarea", Tarea.IdTarea);
-                    comando.Parameters.AddWithValue("@IdUsuario", Tarea.IdUsuario);
-                    comando.Parameters.AddWithValue("@Usuario", Tarea.Usuario);
-                    comando.Parameters.AddWithValue("@Fecha", Tarea.Fecha);
-                    comando.Parameters.AddWithValue("@Tarea", Tarea.Tarea);
-                    comando.Parameters.AddWithValue("@Lugar", Tarea.Lugar);
-                    
-
-
+                    comando.Parameters.AddWithValue("@Nombre", nombre);
                     comando.ExecuteNonQuery();
+
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error al agregar la tarea: " + ex.Message);
+            }
+           
+        }
+        public void AgregarLugar(string nombre)
+        {
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+                {
+                    conexion.Open();
+                    string query = "INSERT INTO Lugar (Nombre) VALUES (@Nombre)";
+                    SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@Nombre", nombre);
+                    comando.ExecuteNonQuery();
+
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al agregar la tarea: " + ex.Message);
+                MessageBox.Show("Error al agregar el lugar: " + ex.Message);
             }
+
         }
+
+
         public void CargarTarea(DataGridView dgv)
         {
             try
             {
-                string query = "SELECT IdTarea, IdUsuario, Usuario, Fecha, Tarea, Lugar  FROM Tareas";
+                string query = "SELECT IdUsuario, Usuario, Fecha, TareaId, LugarId, Insumo, Estudio, Vacaciones, Enfermedad, Salario, Recibo, Comentario  FROM Tareas";
 
                 using (SqlConnection conn = new SqlConnection(cadenaConexion))
                 using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
@@ -353,16 +368,16 @@ namespace prySerna_IEFI
                 using (SqlConnection conexion = new SqlConnection(cadenaConexion))
                 {
                     conexion.Open();
-                    string query = "INSERT INTO Tareas (IdTarea, IdUsuario, Usuario, Fecha, Tarea, Lugar, Insumo, Estudio, Vacaciones, Enfermedad, Salario, Recibo, Comentario) " +
-                                   "VALUES (@IdTarea, @IdUsuario, @Usuario, @Fecha, @Tarea, @Lugar, @Insumo, @Estudio, @Vacaciones, @Enfermedad, @Salario, @Recibo, @Comentario)";
+                    string query = "INSERT INTO Tareas (IdUsuario, Usuario, Fecha, TareaId, LugarId, Insumo, Estudio, Vacaciones, Enfermedad, Salario, Recibo, Comentario) " +
+                                   "VALUES (@IdUsuario, @Usuario, @Fecha, @TareaId, @LugarId, @Insumo, @Estudio, @Vacaciones, @Enfermedad, @Salario, @Recibo, @Comentario)";
 
                     SqlCommand comando = new SqlCommand(query, conexion);
-                    comando.Parameters.AddWithValue("@IdTarea", Tarea.IdTarea);
+                    //comando.Parameters.AddWithValue("@IdTarea", Tarea.IdTarea);
                     comando.Parameters.AddWithValue("@IdUsuario", Tarea.IdUsuario);
                     comando.Parameters.AddWithValue("@Usuario", Tarea.Usuario);
                     comando.Parameters.AddWithValue("@Fecha", Tarea.Fecha);
-                    comando.Parameters.AddWithValue("@Tarea", Tarea.Tarea);
-                    comando.Parameters.AddWithValue("@Lugar", Tarea.Lugar);
+                    comando.Parameters.AddWithValue("@TareaId", Tarea.TareaId);
+                    comando.Parameters.AddWithValue("@LugarId", Tarea.LugarId);
                     comando.Parameters.AddWithValue("@Insumo", Tarea.Insumo);
                     comando.Parameters.AddWithValue("@Estudio", Tarea.Estudio);
                     comando.Parameters.AddWithValue("@Vacaciones", Tarea.Vacaciones);

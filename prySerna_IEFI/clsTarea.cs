@@ -12,8 +12,8 @@ namespace prySerna_IEFI
         public int IdUsuario { get; set; }
         public string Usuario { get; set; }
         public DateTime Fecha { get; set; }
-        public string Tarea {  get; set; }
-        public string Lugar { get; set; }
+        public int TareaId {  get; set; }
+        public int LugarId { get; set; }
         public bool Insumo {  get; set; }
         public bool Estudio { get; set; }
         public bool Vacaciones { get; set; }

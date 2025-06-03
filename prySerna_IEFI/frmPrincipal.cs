@@ -29,9 +29,13 @@ namespace prySerna_IEFI
             if (RolUsuario == "Administrador")
             {
                 msAdministracion.Visible = true;
+                msHistorialAdministrador.Visible = true;
+                msHistorialTarea.Visible = false;
             }
             else
             {
+                msHistorialTarea.Visible = true;
+                msHistorialAdministrador.Visible = false;
                 msAdministracion.Visible=false;
             }
             lblUsuario.Text = $"Usuario conectado: {UsuarioN}";
@@ -74,6 +78,24 @@ namespace prySerna_IEFI
         private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmGestiónUsuarios v = new frmGestiónUsuarios();
+            v.ShowDialog();
+        }
+
+        private void registrarTareaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRegistrarTareas v = new frmRegistrarTareas(RolUsuario, UsuarioN);
+            v.ShowDialog();
+        }
+
+        private void historialDeTareasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmHistorialTarea v = new frmHistorialTarea();
+            v.ShowDialog();
+        }
+
+        private void historialDeTareasDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmHistorialAdministrador v = new frmHistorialAdministrador();
             v.ShowDialog();
         }
     }
