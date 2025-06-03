@@ -274,28 +274,112 @@ namespace prySerna_IEFI
                 MessageBox.Show("Error al eliminar el usuario: " + ex.Message);
             }
         }
-       /* public clsUsuario CargarSoloEsteUsuario(string nombreUsuario)
+        /* public clsUsuario CargarSoloEsteUsuario(string nombreUsuario)
+         {
+             clsUsuario usuario = null;
+             using (SqlConnection conn = new SqlConnection(cadenaConexion))
+             {
+                 string query = "SELECT * FROM Usuarios WHERE Usuario = @Usuario";
+                 SqlCommand cmd = new SqlCommand(query, conn);
+                 cmd.Parameters.AddWithValue("@Usuario", nombreUsuario);
+                 conn.Open();
+                 SqlDataReader reader = cmd.ExecuteReader();
+                 if (reader.Read())
+                 {
+                     usuario = new clsUsuario
+                     {
+                         Usuario = reader["Usuario"].ToString(),
+                         Contraseña = reader["Contraseña"].ToString(),
+                         // Otros campos si se necesitan
+                     };
+                 }
+             }
+             return usuario;
+         *///}
+
+        public void AgregarTarea(clsTarea Tarea)
         {
-            clsUsuario usuario = null;
-            using (SqlConnection conn = new SqlConnection(cadenaConexion))
+            try
             {
-                string query = "SELECT * FROM Usuarios WHERE Usuario = @Usuario";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Usuario", nombreUsuario);
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
+                using (SqlConnection conexion = new SqlConnection(cadenaConexion))
                 {
-                    usuario = new clsUsuario
-                    {
-                        Usuario = reader["Usuario"].ToString(),
-                        Contraseña = reader["Contraseña"].ToString(),
-                        // Otros campos si se necesitan
-                    };
+                    conexion.Open();
+                    string query = "INSERT INTO Tareas (IdTarea, IdUsuario, Usuario, Fecha, Tarea, Lugar) " +
+                                   "VALUES (@IdTarea, @IdUsuario, @Usuario, @Fecha, @Tarea, @Lugar)";
+
+                    SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@IdTarea", Tarea.IdTarea);
+                    comando.Parameters.AddWithValue("@IdUsuario", Tarea.IdUsuario);
+                    comando.Parameters.AddWithValue("@Usuario", Tarea.Usuario);
+                    comando.Parameters.AddWithValue("@Fecha", Tarea.Fecha);
+                    comando.Parameters.AddWithValue("@Tarea", Tarea.Tarea);
+                    comando.Parameters.AddWithValue("@Lugar", Tarea.Lugar);
+                    
+
+
+                    comando.ExecuteNonQuery();
                 }
             }
-            return usuario;
-        *///}
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar la tarea: " + ex.Message);
+            }
+        }
+        public void CargarTarea(DataGridView dgv)
+        {
+            try
+            {
+                string query = "SELECT IdTarea, IdUsuario, Usuario, Fecha, Tarea, Lugar  FROM Tareas";
+
+                using (SqlConnection conn = new SqlConnection(cadenaConexion))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
+                {
+                    DataTable tabla = new DataTable();
+                    adapter.Fill(tabla);
+                    dgv.DataSource = tabla;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los datos: " + ex.Message);
+            }
+
+        }
+        public void GrabarTarea(clsTarea Tarea)
+        {
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+                {
+                    conexion.Open();
+                    string query = "INSERT INTO Tareas (IdTarea, IdUsuario, Usuario, Fecha, Tarea, Lugar, Insumo, Estudio, Vacaciones, Enfermedad, Salario, Recibo, Comentario) " +
+                                   "VALUES (@IdTarea, @IdUsuario, @Usuario, @Fecha, @Tarea, @Lugar, @Insumo, @Estudio, @Vacaciones, @Enfermedad, @Salario, @Recibo, @Comentario)";
+
+                    SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@IdTarea", Tarea.IdTarea);
+                    comando.Parameters.AddWithValue("@IdUsuario", Tarea.IdUsuario);
+                    comando.Parameters.AddWithValue("@Usuario", Tarea.Usuario);
+                    comando.Parameters.AddWithValue("@Fecha", Tarea.Fecha);
+                    comando.Parameters.AddWithValue("@Tarea", Tarea.Tarea);
+                    comando.Parameters.AddWithValue("@Lugar", Tarea.Lugar);
+                    comando.Parameters.AddWithValue("@Insumo", Tarea.Insumo);
+                    comando.Parameters.AddWithValue("@Estudio", Tarea.Estudio);
+                    comando.Parameters.AddWithValue("@Vacaciones", Tarea.Vacaciones);
+                    comando.Parameters.AddWithValue("@Enfermedad", Tarea.Enfermedad);
+                    comando.Parameters.AddWithValue("@Salario", Tarea.Salario);
+                    comando.Parameters.AddWithValue("@Recibo", Tarea.Recibo);
+                    comando.Parameters.AddWithValue("@Comentario", Tarea.Comentario);
+
+
+                    comando.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar la tarea: " + ex.Message);
+            }
+        }
 
 
 
