@@ -27,9 +27,17 @@ namespace prySerna_IEFI
             {
                 conexion.Open();
                 SqlCommand comando = new SqlCommand("SELECT Id, Nombre FROM TareasTipo", conexion);
+                
                 SqlDataAdapter adaptador = new SqlDataAdapter(comando);
                 DataTable dt = new DataTable();
                 adaptador.Fill(dt);
+
+                // Agregamos opción "Todos"
+                DataRow filaTodos = dt.NewRow();
+                filaTodos["Id"] = 0;
+                filaTodos["Nombre"] = "Todos";
+                dt.Rows.InsertAt(filaTodos, 0);
+
                 cmbTarea.DataSource = dt;
                 cmbTarea.DisplayMember = "Nombre";
                 cmbTarea.ValueMember = "Id";
@@ -38,9 +46,17 @@ namespace prySerna_IEFI
             {
                 conexion.Open();
                 SqlCommand comando = new SqlCommand("SELECT Id, Nombre FROM Lugar", conexion);
+
                 SqlDataAdapter adaptador = new SqlDataAdapter(comando);
                 DataTable dt = new DataTable();
                 adaptador.Fill(dt);
+
+                // Agregamos opción "Todos"
+                DataRow filaTodos = dt.NewRow();
+                filaTodos["Id"] = 0;
+                filaTodos["Nombre"] = "Todos";
+                dt.Rows.InsertAt(filaTodos, 0);
+               
                 cmbLugar.DataSource = dt;
                 cmbLugar.DisplayMember = "Nombre";
                 cmbLugar.ValueMember = "Id";
@@ -50,21 +66,85 @@ namespace prySerna_IEFI
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            clsConexión BD = new clsConexión();
+            try
+            {
+                clsConexión BD = new clsConexión();
 
-            int idUsuario = (int)nmCodigo.Value;
-            string usuario = txtUsuario.Text.Trim();
-            DateTime fecha = dtFecha.Value.Date;
-            int tareaId = cmbTarea.SelectedValue != null ? Convert.ToInt32(cmbTarea.SelectedValue) : 0;
-            int lugarId = cmbLugar.SelectedValue != null ? Convert.ToInt32(cmbLugar.SelectedValue) : 0;
+                string query = @"
+                 SELECT 
+                 T.Fecha,
+                 L.Nombre AS Lugar,
+                 TA.Nombre AS Tarea,
+                 T.Comentario,
+                 T.Insumo,
+                 T.Estudio,
+                 T.Vacaciones,
+                 T.Enfermedad,
+                 T.Salario,
+                 T.Recibo,
+                 U.Usuario AS Usuario
+                 FROM Tareas T
+                 JOIN Lugar L ON T.LugarId = L.Id
+                 JOIN TareasTipo TA ON T.TareaId = TA.Id
+                 JOIN Usuarios U ON T.IdUsuario = U.IdUsuario
+                    WHERE 1 = 1";
 
-            // Muestra los filtros actuales (debug)
-           // MessageBox.Show($"IdUsuario: {idUsuario}\nUsuario: {usuario}\nFecha: {fecha.ToShortDateString()}\nTareaId: {tareaId}\nLugarId: {lugarId}");
 
-            DataTable resultado = BD.BuscarTareas(idUsuario, usuario, fecha, tareaId, lugarId);
-            dgvTareas.DataSource = resultado;
+                using (SqlConnection conexion = new SqlConnection(BD.cadenaConexion))
+                using (SqlCommand comando = new SqlCommand())
+                {
+                    comando.Connection = conexion;
+
+                    if (nmCodigo.Value > 0)
+                    {
+                        query += " AND T.IdUsuario = @IdUsuario";
+                        comando.Parameters.AddWithValue("@IdUsuario", Convert.ToInt32(nmCodigo.Value));
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(txtUsuario.Text))
+                    {
+                        query += " AND U.Usuario LIKE @NombreUsuario";
+                        comando.Parameters.AddWithValue("@NombreUsuario", "%" + txtUsuario.Text + "%");
+                    }
+
+                    if (cmbTarea.SelectedIndex > 0 && cmbTarea.SelectedValue != null)
+                    {
+                        query += " AND T.TareaId = @TareaId";
+                        comando.Parameters.AddWithValue("@TareaId", cmbTarea.SelectedValue);
+                    }
+
+                    if (cmbLugar.SelectedIndex > 0 && cmbLugar.SelectedValue != null)
+                    {
+                        query += " AND T.LugarId = @LugarId";
+                        comando.Parameters.AddWithValue("@LugarId", cmbLugar.SelectedValue);
+                    }
+
+                    if (dtFecha.ShowCheckBox && dtFecha.Checked)
+                    {
+                        DateTime fechaInicio = dtFecha.Value.Date;
+                        DateTime fechaFin = fechaInicio.AddDays(1);
+
+                        query += " AND T.Fecha >= @FechaInicio AND T.Fecha < @FechaFin";
+                        comando.Parameters.AddWithValue("@FechaInicio", fechaInicio);
+                        comando.Parameters.AddWithValue("@FechaFin", fechaFin);
+                    }
+
+                    comando.CommandText = query;
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(comando);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dgvTareas.DataSource = dt;
+                }
+
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show($"No se pudo buscar la tarea" + ex.Message);
+            }
 
 
         }
     }
+    
 }

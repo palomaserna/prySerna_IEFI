@@ -30,19 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistrarUsuario));
             this.grpUsuario = new System.Windows.Forms.GroupBox();
+            this.txtGmail = new System.Windows.Forms.TextBox();
+            this.lblGmail = new System.Windows.Forms.Label();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.lblTelefono = new System.Windows.Forms.Label();
+            this.txtDni = new System.Windows.Forms.TextBox();
+            this.lblDni = new System.Windows.Forms.Label();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
+            this.lblDireccion = new System.Windows.Forms.Label();
             this.btnRegistro = new System.Windows.Forms.Button();
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.lblContraseña = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
-            this.lblDireccion = new System.Windows.Forms.Label();
-            this.txtDireccion = new System.Windows.Forms.TextBox();
-            this.lblDni = new System.Windows.Forms.Label();
-            this.txtDni = new System.Windows.Forms.TextBox();
-            this.lblTelefono = new System.Windows.Forms.Label();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
-            this.lblGmail = new System.Windows.Forms.Label();
-            this.txtGmail = new System.Windows.Forms.TextBox();
             this.grpUsuario.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,6 +73,86 @@
             this.grpUsuario.TabIndex = 1;
             this.grpUsuario.TabStop = false;
             this.grpUsuario.Text = "Complete para crear un usuario";
+            // 
+            // txtGmail
+            // 
+            this.txtGmail.Location = new System.Drawing.Point(467, 198);
+            this.txtGmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtGmail.Name = "txtGmail";
+            this.txtGmail.Size = new System.Drawing.Size(190, 32);
+            this.txtGmail.TabIndex = 13;
+            // 
+            // lblGmail
+            // 
+            this.lblGmail.AutoSize = true;
+            this.lblGmail.BackColor = System.Drawing.Color.Transparent;
+            this.lblGmail.Font = new System.Drawing.Font("Impact", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGmail.Location = new System.Drawing.Point(367, 205);
+            this.lblGmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblGmail.Name = "lblGmail";
+            this.lblGmail.Size = new System.Drawing.Size(58, 25);
+            this.lblGmail.TabIndex = 12;
+            this.lblGmail.Text = "Gmail";
+            // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Location = new System.Drawing.Point(467, 121);
+            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(190, 32);
+            this.txtTelefono.TabIndex = 11;
+            // 
+            // lblTelefono
+            // 
+            this.lblTelefono.AutoSize = true;
+            this.lblTelefono.BackColor = System.Drawing.Color.Transparent;
+            this.lblTelefono.Font = new System.Drawing.Font("Impact", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelefono.Location = new System.Drawing.Point(367, 124);
+            this.lblTelefono.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTelefono.Name = "lblTelefono";
+            this.lblTelefono.Size = new System.Drawing.Size(81, 25);
+            this.lblTelefono.TabIndex = 10;
+            this.lblTelefono.Text = "Teléfono";
+            // 
+            // txtDni
+            // 
+            this.txtDni.Location = new System.Drawing.Point(467, 52);
+            this.txtDni.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtDni.Name = "txtDni";
+            this.txtDni.Size = new System.Drawing.Size(190, 32);
+            this.txtDni.TabIndex = 9;
+            // 
+            // lblDni
+            // 
+            this.lblDni.AutoSize = true;
+            this.lblDni.BackColor = System.Drawing.Color.Transparent;
+            this.lblDni.Font = new System.Drawing.Font("Impact", 10F);
+            this.lblDni.Location = new System.Drawing.Point(367, 52);
+            this.lblDni.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDni.Name = "lblDni";
+            this.lblDni.Size = new System.Drawing.Size(40, 25);
+            this.lblDni.TabIndex = 8;
+            this.lblDni.Text = "DNI";
+            // 
+            // txtDireccion
+            // 
+            this.txtDireccion.Location = new System.Drawing.Point(132, 202);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(190, 32);
+            this.txtDireccion.TabIndex = 7;
+            // 
+            // lblDireccion
+            // 
+            this.lblDireccion.AutoSize = true;
+            this.lblDireccion.BackColor = System.Drawing.Color.Transparent;
+            this.lblDireccion.Font = new System.Drawing.Font("Impact", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDireccion.Location = new System.Drawing.Point(10, 205);
+            this.lblDireccion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDireccion.Name = "lblDireccion";
+            this.lblDireccion.Size = new System.Drawing.Size(90, 25);
+            this.lblDireccion.TabIndex = 6;
+            this.lblDireccion.Text = "Dirección";
             // 
             // btnRegistro
             // 
@@ -128,92 +208,15 @@
             this.lblUsuario.TabIndex = 0;
             this.lblUsuario.Text = "Usuario";
             // 
-            // lblDireccion
-            // 
-            this.lblDireccion.AutoSize = true;
-            this.lblDireccion.BackColor = System.Drawing.Color.Transparent;
-            this.lblDireccion.Font = new System.Drawing.Font("Impact", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDireccion.Location = new System.Drawing.Point(10, 205);
-            this.lblDireccion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDireccion.Name = "lblDireccion";
-            this.lblDireccion.Size = new System.Drawing.Size(90, 25);
-            this.lblDireccion.TabIndex = 6;
-            this.lblDireccion.Text = "Dirección";
-            // 
-            // txtDireccion
-            // 
-            this.txtDireccion.Location = new System.Drawing.Point(132, 202);
-            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(190, 32);
-            this.txtDireccion.TabIndex = 7;
-            // 
-            // lblDni
-            // 
-            this.lblDni.AutoSize = true;
-            this.lblDni.BackColor = System.Drawing.Color.Transparent;
-            this.lblDni.Font = new System.Drawing.Font("Impact", 10F);
-            this.lblDni.Location = new System.Drawing.Point(367, 52);
-            this.lblDni.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDni.Name = "lblDni";
-            this.lblDni.Size = new System.Drawing.Size(40, 25);
-            this.lblDni.TabIndex = 8;
-            this.lblDni.Text = "DNI";
-            // 
-            // txtDni
-            // 
-            this.txtDni.Location = new System.Drawing.Point(467, 52);
-            this.txtDni.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtDni.Name = "txtDni";
-            this.txtDni.Size = new System.Drawing.Size(190, 32);
-            this.txtDni.TabIndex = 9;
-            // 
-            // lblTelefono
-            // 
-            this.lblTelefono.AutoSize = true;
-            this.lblTelefono.BackColor = System.Drawing.Color.Transparent;
-            this.lblTelefono.Font = new System.Drawing.Font("Impact", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefono.Location = new System.Drawing.Point(367, 124);
-            this.lblTelefono.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(81, 25);
-            this.lblTelefono.TabIndex = 10;
-            this.lblTelefono.Text = "Teléfono";
-            // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Location = new System.Drawing.Point(467, 121);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(190, 32);
-            this.txtTelefono.TabIndex = 11;
-            // 
-            // lblGmail
-            // 
-            this.lblGmail.AutoSize = true;
-            this.lblGmail.BackColor = System.Drawing.Color.Transparent;
-            this.lblGmail.Font = new System.Drawing.Font("Impact", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGmail.Location = new System.Drawing.Point(367, 205);
-            this.lblGmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblGmail.Name = "lblGmail";
-            this.lblGmail.Size = new System.Drawing.Size(58, 25);
-            this.lblGmail.TabIndex = 12;
-            this.lblGmail.Text = "Gmail";
-            // 
-            // txtGmail
-            // 
-            this.txtGmail.Location = new System.Drawing.Point(467, 198);
-            this.txtGmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtGmail.Name = "txtGmail";
-            this.txtGmail.Size = new System.Drawing.Size(190, 32);
-            this.txtGmail.TabIndex = 13;
-            // 
             // frmRegistrarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(990, 653);
             this.Controls.Add(this.grpUsuario);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmRegistrarUsuario";
             this.Text = "Registrar Usuario";
             this.Load += new System.EventHandler(this.frmRegistrarUsuario_Load);

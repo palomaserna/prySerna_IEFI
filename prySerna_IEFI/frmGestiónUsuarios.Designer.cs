@@ -35,6 +35,8 @@
             this.lblUsuario = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.grpUsuario = new System.Windows.Forms.GroupBox();
+            this.txtEstado = new System.Windows.Forms.TextBox();
+            this.txtRol = new System.Windows.Forms.TextBox();
             this.lblEstado = new System.Windows.Forms.Label();
             this.mkFecha = new System.Windows.Forms.MaskedTextBox();
             this.lblFecha = new System.Windows.Forms.Label();
@@ -52,8 +54,6 @@
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.lblContraseña = new System.Windows.Forms.Label();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
-            this.txtRol = new System.Windows.Forms.TextBox();
-            this.txtEstado = new System.Windows.Forms.TextBox();
             this.grpUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmCodigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
@@ -152,6 +152,20 @@
             this.grpUsuario.TabIndex = 5;
             this.grpUsuario.TabStop = false;
             this.grpUsuario.Text = "Usuario";
+            // 
+            // txtEstado
+            // 
+            this.txtEstado.Location = new System.Drawing.Point(634, 103);
+            this.txtEstado.Name = "txtEstado";
+            this.txtEstado.Size = new System.Drawing.Size(120, 29);
+            this.txtEstado.TabIndex = 33;
+            // 
+            // txtRol
+            // 
+            this.txtRol.Location = new System.Drawing.Point(94, 251);
+            this.txtRol.Name = "txtRol";
+            this.txtRol.Size = new System.Drawing.Size(120, 29);
+            this.txtRol.TabIndex = 32;
             // 
             // lblEstado
             // 
@@ -301,24 +315,11 @@
             this.dgvUsuarios.Location = new System.Drawing.Point(38, 400);
             this.dgvUsuarios.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvUsuarios.Name = "dgvUsuarios";
+            this.dgvUsuarios.ReadOnly = true;
             this.dgvUsuarios.RowHeadersWidth = 62;
             this.dgvUsuarios.Size = new System.Drawing.Size(915, 332);
             this.dgvUsuarios.TabIndex = 6;
             this.dgvUsuarios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellDoubleClick);
-            // 
-            // txtRol
-            // 
-            this.txtRol.Location = new System.Drawing.Point(94, 251);
-            this.txtRol.Name = "txtRol";
-            this.txtRol.Size = new System.Drawing.Size(120, 29);
-            this.txtRol.TabIndex = 32;
-            // 
-            // txtEstado
-            // 
-            this.txtEstado.Location = new System.Drawing.Point(634, 103);
-            this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(120, 29);
-            this.txtEstado.TabIndex = 33;
             // 
             // frmGestiónUsuarios
             // 
@@ -332,7 +333,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmGestiónUsuarios";
             this.Text = "GestiónUsuarios";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmGestiónUsuarios_FormClosing);
             this.Load += new System.EventHandler(this.frmGestiónUsuarios_Load);
             this.grpUsuario.ResumeLayout(false);
             this.grpUsuario.PerformLayout();

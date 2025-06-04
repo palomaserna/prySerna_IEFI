@@ -14,8 +14,7 @@ namespace prySerna_IEFI
 {
     public partial class frmGestiónUsuarios : Form
     {
-       // public string RolUsuario {  get; set; }
-        //public string UsuarioActual { get; set; }
+      
         public frmGestiónUsuarios()
         {
             InitializeComponent();
@@ -23,12 +22,8 @@ namespace prySerna_IEFI
 
         private void frmGestiónUsuarios_Load(object sender, EventArgs e)
         {
-            
-
             clsConexión BD = new clsConexión();
             BD.CargarGestion(dgvUsuarios);
-           
-
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -41,19 +36,16 @@ namespace prySerna_IEFI
                     Usuario.IdUsuario = Convert.ToInt32(nmCodigo.Value);
                     Usuario.Usuario = txtUsuario.Text;
                     Usuario.Contraseña = txtContraseña.Text;
-                   // Usuario.Rol = cmbRol.Text;
-                   Usuario.Rol=txtRol.Text;
+                    Usuario.Rol=txtRol.Text;
                     Usuario.Direccion=txtDirección.Text;
                     Usuario.Dni=long.Parse(txtDni.Text);
-                   
-                   Usuario.Telefono = long.Parse(txtTeléfono.Text);
+                    Usuario.Telefono = long.Parse(txtTeléfono.Text);
                     Usuario.Gmail=txtGmail.Text;
-                  //  Usuario.Estado=cmbEstado.Text;
-                  Usuario.Estado=txtEstado.Text;
+                    Usuario.Estado=txtEstado.Text;
                     Usuario.FechaCreacion = DateTime.Parse(mkFecha.Text);
                     BD.Agregar(Usuario);
                     BD.CargarGestion(dgvUsuarios);
-                };
+                }
             } catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -103,30 +95,22 @@ namespace prySerna_IEFI
                     Usuario.IdUsuario=Convert.ToInt32(nmCodigo.Value);
                     Usuario.Usuario = txtUsuario.Text;
                     Usuario.Contraseña = txtContraseña.Text;
-                   // Usuario.Rol = cmbRol.Text;
-                   Usuario.Rol=txtRol.Text;
+                    Usuario.Rol=txtRol.Text;
                     Usuario.Direccion = txtDirección.Text;
                     Usuario.Dni =   long.Parse(txtDni.Text);
                     Usuario.Telefono = long.Parse(txtTeléfono.Text);
                     Usuario.Gmail = txtGmail.Text;
-                    //Usuario.Estado = cmbEstado.Text;
                     Usuario.Estado = txtEstado.Text;
                     Usuario.FechaCreacion = DateTime.Parse(mkFecha.Text);
                     BD.Eliminar(Usuario);
                     BD.CargarGestion(dgvUsuarios);
-                };
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-
-        private void frmGestiónUsuarios_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
-        }
-
         private void dgvUsuarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -146,8 +130,6 @@ namespace prySerna_IEFI
                 {
                     mkFecha.Text = Convert.ToDateTime(fila.Cells["FechaCreacion"].Value).ToString("dd/MM/yyyy");
                 }
-                //cmbEstado.SelectedItem = fila.Cells["Estado"].Value.ToString();
-                //tiempo
             }
         }
     }

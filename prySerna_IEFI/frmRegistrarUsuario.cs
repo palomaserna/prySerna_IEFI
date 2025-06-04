@@ -48,5 +48,7 @@ namespace prySerna_IEFI
             txtUsuario.Clear();
             txtContraseña.Clear();
         }
+
+       
     }
 }

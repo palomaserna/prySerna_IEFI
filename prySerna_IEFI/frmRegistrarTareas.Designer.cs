@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistrarTareas));
             this.lblFecha = new System.Windows.Forms.Label();
             this.dtFecha = new System.Windows.Forms.DateTimePicker();
             this.cmbTarea = new System.Windows.Forms.ComboBox();
@@ -37,12 +38,12 @@
             this.grpDetalle = new System.Windows.Forms.GroupBox();
             this.cbRecibo = new System.Windows.Forms.CheckBox();
             this.cbSalario = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblReclamo = new System.Windows.Forms.Label();
             this.cbEnfermedad = new System.Windows.Forms.CheckBox();
             this.cbVacaciones = new System.Windows.Forms.CheckBox();
             this.cbEstudio = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblLicencia = new System.Windows.Forms.Label();
+            this.lblFaltaUniforme = new System.Windows.Forms.Label();
             this.txtComentario = new System.Windows.Forms.TextBox();
             this.lblTarea = new System.Windows.Forms.Label();
             this.grpTarea = new System.Windows.Forms.GroupBox();
@@ -71,51 +72,54 @@
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Location = new System.Drawing.Point(328, 48);
+            this.lblFecha.BackColor = System.Drawing.Color.Transparent;
+            this.lblFecha.Location = new System.Drawing.Point(328, 53);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(54, 20);
+            this.lblFecha.Size = new System.Drawing.Size(53, 22);
             this.lblFecha.TabIndex = 0;
             this.lblFecha.Text = "Fecha";
             // 
             // dtFecha
             // 
-            this.dtFecha.Location = new System.Drawing.Point(416, 43);
+            this.dtFecha.Location = new System.Drawing.Point(416, 47);
             this.dtFecha.Name = "dtFecha";
-            this.dtFecha.Size = new System.Drawing.Size(200, 26);
+            this.dtFecha.Size = new System.Drawing.Size(200, 29);
             this.dtFecha.TabIndex = 1;
             // 
             // cmbTarea
             // 
             this.cmbTarea.FormattingEnabled = true;
-            this.cmbTarea.Location = new System.Drawing.Point(738, 45);
+            this.cmbTarea.Location = new System.Drawing.Point(738, 50);
             this.cmbTarea.Name = "cmbTarea";
-            this.cmbTarea.Size = new System.Drawing.Size(200, 28);
+            this.cmbTarea.Size = new System.Drawing.Size(200, 30);
             this.cmbTarea.TabIndex = 2;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(966, 131);
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(141)))));
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAgregar.Location = new System.Drawing.Point(945, 138);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(84, 32);
+            this.btnAgregar.Size = new System.Drawing.Size(105, 41);
             this.btnAgregar.TabIndex = 3;
             this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // cmbLugar
             // 
             this.cmbLugar.FormattingEnabled = true;
-            this.cmbLugar.Location = new System.Drawing.Point(416, 104);
+            this.cmbLugar.Location = new System.Drawing.Point(416, 114);
             this.cmbLugar.Name = "cmbLugar";
-            this.cmbLugar.Size = new System.Drawing.Size(200, 28);
+            this.cmbLugar.Size = new System.Drawing.Size(200, 30);
             this.cmbLugar.TabIndex = 4;
             // 
             // cbInsumo
             // 
             this.cbInsumo.AutoSize = true;
-            this.cbInsumo.Location = new System.Drawing.Point(72, 88);
+            this.cbInsumo.Location = new System.Drawing.Point(72, 97);
             this.cbInsumo.Name = "cbInsumo";
-            this.cbInsumo.Size = new System.Drawing.Size(88, 24);
+            this.cbInsumo.Size = new System.Drawing.Size(89, 26);
             this.cbInsumo.TabIndex = 6;
             this.cbInsumo.Text = "Insumo";
             this.cbInsumo.UseVisualStyleBackColor = true;
@@ -124,16 +128,16 @@
             // 
             this.grpDetalle.Controls.Add(this.cbRecibo);
             this.grpDetalle.Controls.Add(this.cbSalario);
-            this.grpDetalle.Controls.Add(this.label3);
+            this.grpDetalle.Controls.Add(this.lblReclamo);
             this.grpDetalle.Controls.Add(this.cbEnfermedad);
             this.grpDetalle.Controls.Add(this.cbVacaciones);
             this.grpDetalle.Controls.Add(this.cbEstudio);
-            this.grpDetalle.Controls.Add(this.label2);
-            this.grpDetalle.Controls.Add(this.label1);
+            this.grpDetalle.Controls.Add(this.lblLicencia);
+            this.grpDetalle.Controls.Add(this.lblFaltaUniforme);
             this.grpDetalle.Controls.Add(this.cbInsumo);
-            this.grpDetalle.Location = new System.Drawing.Point(38, 409);
+            this.grpDetalle.Location = new System.Drawing.Point(38, 450);
             this.grpDetalle.Name = "grpDetalle";
-            this.grpDetalle.Size = new System.Drawing.Size(738, 223);
+            this.grpDetalle.Size = new System.Drawing.Size(738, 245);
             this.grpDetalle.TabIndex = 7;
             this.grpDetalle.TabStop = false;
             this.grpDetalle.Text = "Detalle";
@@ -141,9 +145,9 @@
             // cbRecibo
             // 
             this.cbRecibo.AutoSize = true;
-            this.cbRecibo.Location = new System.Drawing.Point(571, 137);
+            this.cbRecibo.Location = new System.Drawing.Point(571, 151);
             this.cbRecibo.Name = "cbRecibo";
-            this.cbRecibo.Size = new System.Drawing.Size(85, 24);
+            this.cbRecibo.Size = new System.Drawing.Size(87, 26);
             this.cbRecibo.TabIndex = 14;
             this.cbRecibo.Text = "Recibo";
             this.cbRecibo.UseVisualStyleBackColor = true;
@@ -151,28 +155,28 @@
             // cbSalario
             // 
             this.cbSalario.AutoSize = true;
-            this.cbSalario.Location = new System.Drawing.Point(571, 88);
+            this.cbSalario.Location = new System.Drawing.Point(571, 97);
             this.cbSalario.Name = "cbSalario";
-            this.cbSalario.Size = new System.Drawing.Size(84, 24);
+            this.cbSalario.Size = new System.Drawing.Size(88, 26);
             this.cbSalario.TabIndex = 17;
             this.cbSalario.Text = "Salario";
             this.cbSalario.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // lblReclamo
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(527, 50);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 20);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "Reclamo";
+            this.lblReclamo.AutoSize = true;
+            this.lblReclamo.Location = new System.Drawing.Point(527, 55);
+            this.lblReclamo.Name = "lblReclamo";
+            this.lblReclamo.Size = new System.Drawing.Size(74, 22);
+            this.lblReclamo.TabIndex = 16;
+            this.lblReclamo.Text = "Reclamo";
             // 
             // cbEnfermedad
             // 
             this.cbEnfermedad.AutoSize = true;
-            this.cbEnfermedad.Location = new System.Drawing.Point(293, 187);
+            this.cbEnfermedad.Location = new System.Drawing.Point(293, 206);
             this.cbEnfermedad.Name = "cbEnfermedad";
-            this.cbEnfermedad.Size = new System.Drawing.Size(123, 24);
+            this.cbEnfermedad.Size = new System.Drawing.Size(121, 26);
             this.cbEnfermedad.TabIndex = 15;
             this.cbEnfermedad.Text = "Enfermedad";
             this.cbEnfermedad.UseVisualStyleBackColor = true;
@@ -180,9 +184,9 @@
             // cbVacaciones
             // 
             this.cbVacaciones.AutoSize = true;
-            this.cbVacaciones.Location = new System.Drawing.Point(293, 137);
+            this.cbVacaciones.Location = new System.Drawing.Point(293, 151);
             this.cbVacaciones.Name = "cbVacaciones";
-            this.cbVacaciones.Size = new System.Drawing.Size(118, 24);
+            this.cbVacaciones.Size = new System.Drawing.Size(121, 26);
             this.cbVacaciones.TabIndex = 14;
             this.cbVacaciones.Text = "Vacaciones";
             this.cbVacaciones.UseVisualStyleBackColor = true;
@@ -190,51 +194,53 @@
             // cbEstudio
             // 
             this.cbEstudio.AutoSize = true;
-            this.cbEstudio.Location = new System.Drawing.Point(293, 88);
+            this.cbEstudio.Location = new System.Drawing.Point(293, 97);
             this.cbEstudio.Name = "cbEstudio";
-            this.cbEstudio.Size = new System.Drawing.Size(89, 24);
+            this.cbEstudio.Size = new System.Drawing.Size(88, 26);
             this.cbEstudio.TabIndex = 13;
             this.cbEstudio.Text = "Estudio";
             this.cbEstudio.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // lblLicencia
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(264, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 20);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Licencia";
+            this.lblLicencia.AutoSize = true;
+            this.lblLicencia.Location = new System.Drawing.Point(264, 55);
+            this.lblLicencia.Name = "lblLicencia";
+            this.lblLicencia.Size = new System.Drawing.Size(72, 22);
+            this.lblLicencia.TabIndex = 12;
+            this.lblLicencia.Text = "Licencia";
             // 
-            // label1
+            // lblFaltaUniforme
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 20);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Falta de uniforme";
+            this.lblFaltaUniforme.AutoSize = true;
+            this.lblFaltaUniforme.Location = new System.Drawing.Point(30, 55);
+            this.lblFaltaUniforme.Name = "lblFaltaUniforme";
+            this.lblFaltaUniforme.Size = new System.Drawing.Size(134, 22);
+            this.lblFaltaUniforme.TabIndex = 11;
+            this.lblFaltaUniforme.Text = "Falta de uniforme";
             // 
             // txtComentario
             // 
-            this.txtComentario.Location = new System.Drawing.Point(38, 691);
+            this.txtComentario.Location = new System.Drawing.Point(38, 760);
             this.txtComentario.Multiline = true;
             this.txtComentario.Name = "txtComentario";
             this.txtComentario.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtComentario.Size = new System.Drawing.Size(738, 100);
+            this.txtComentario.Size = new System.Drawing.Size(738, 110);
             this.txtComentario.TabIndex = 8;
             // 
             // lblTarea
             // 
             this.lblTarea.AutoSize = true;
-            this.lblTarea.Location = new System.Drawing.Point(664, 53);
+            this.lblTarea.BackColor = System.Drawing.Color.Transparent;
+            this.lblTarea.Location = new System.Drawing.Point(664, 58);
             this.lblTarea.Name = "lblTarea";
-            this.lblTarea.Size = new System.Drawing.Size(50, 20);
+            this.lblTarea.Size = new System.Drawing.Size(50, 22);
             this.lblTarea.TabIndex = 9;
             this.lblTarea.Text = "Tarea";
             // 
             // grpTarea
             // 
+            this.grpTarea.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("grpTarea.BackgroundImage")));
             this.grpTarea.Controls.Add(this.lblAgregarLugar);
             this.grpTarea.Controls.Add(this.lblAgregarTarea);
             this.grpTarea.Controls.Add(this.txtUsuario);
@@ -248,9 +254,11 @@
             this.grpTarea.Controls.Add(this.cmbLugar);
             this.grpTarea.Controls.Add(this.dtFecha);
             this.grpTarea.Controls.Add(this.cmbTarea);
-            this.grpTarea.Location = new System.Drawing.Point(38, 26);
+            this.grpTarea.Font = new System.Drawing.Font("Impact", 9F);
+            this.grpTarea.ForeColor = System.Drawing.Color.White;
+            this.grpTarea.Location = new System.Drawing.Point(38, 29);
             this.grpTarea.Name = "grpTarea";
-            this.grpTarea.Size = new System.Drawing.Size(1069, 179);
+            this.grpTarea.Size = new System.Drawing.Size(1069, 197);
             this.grpTarea.TabIndex = 8;
             this.grpTarea.TabStop = false;
             this.grpTarea.Text = "Complete para registrar la tarea";
@@ -258,9 +266,11 @@
             // lblAgregarLugar
             // 
             this.lblAgregarLugar.AutoSize = true;
-            this.lblAgregarLugar.Location = new System.Drawing.Point(412, 143);
+            this.lblAgregarLugar.BackColor = System.Drawing.Color.Transparent;
+            this.lblAgregarLugar.Font = new System.Drawing.Font("Impact", 8F);
+            this.lblAgregarLugar.Location = new System.Drawing.Point(412, 157);
             this.lblAgregarLugar.Name = "lblAgregarLugar";
-            this.lblAgregarLugar.Size = new System.Drawing.Size(194, 20);
+            this.lblAgregarLugar.Size = new System.Drawing.Size(177, 20);
             this.lblAgregarLugar.TabIndex = 16;
             this.lblAgregarLugar.Text = "¿Desea agregar un lugar?";
             this.lblAgregarLugar.Click += new System.EventHandler(this.lblAgregarLugar_Click);
@@ -268,81 +278,94 @@
             // lblAgregarTarea
             // 
             this.lblAgregarTarea.AutoSize = true;
-            this.lblAgregarTarea.Location = new System.Drawing.Point(727, 80);
+            this.lblAgregarTarea.BackColor = System.Drawing.Color.Transparent;
+            this.lblAgregarTarea.Font = new System.Drawing.Font("Impact", 8F);
+            this.lblAgregarTarea.Location = new System.Drawing.Point(727, 88);
             this.lblAgregarTarea.Name = "lblAgregarTarea";
-            this.lblAgregarTarea.Size = new System.Drawing.Size(205, 20);
+            this.lblAgregarTarea.Size = new System.Drawing.Size(186, 20);
             this.lblAgregarTarea.TabIndex = 15;
             this.lblAgregarTarea.Text = "¿Desea agregar una tarea?";
             this.lblAgregarTarea.Click += new System.EventHandler(this.lblAgregarTarea_Click);
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(172, 104);
+            this.txtUsuario.Location = new System.Drawing.Point(172, 114);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(131, 26);
+            this.txtUsuario.Size = new System.Drawing.Size(131, 29);
             this.txtUsuario.TabIndex = 14;
             // 
             // nmCodigo
             // 
-            this.nmCodigo.Location = new System.Drawing.Point(172, 40);
+            this.nmCodigo.Location = new System.Drawing.Point(172, 44);
             this.nmCodigo.Name = "nmCodigo";
-            this.nmCodigo.Size = new System.Drawing.Size(120, 26);
+            this.nmCodigo.Size = new System.Drawing.Size(120, 29);
             this.nmCodigo.TabIndex = 13;
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(19, 107);
+            this.lblNombre.BackColor = System.Drawing.Color.Transparent;
+            this.lblNombre.Location = new System.Drawing.Point(19, 118);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(146, 20);
+            this.lblNombre.Size = new System.Drawing.Size(146, 22);
             this.lblNombre.TabIndex = 12;
             this.lblNombre.Text = "Nombre de Usuario";
             // 
             // lblCodigoUser
             // 
             this.lblCodigoUser.AutoSize = true;
-            this.lblCodigoUser.Location = new System.Drawing.Point(19, 46);
+            this.lblCodigoUser.BackColor = System.Drawing.Color.Transparent;
+            this.lblCodigoUser.Location = new System.Drawing.Point(19, 51);
             this.lblCodigoUser.Name = "lblCodigoUser";
-            this.lblCodigoUser.Size = new System.Drawing.Size(140, 20);
+            this.lblCodigoUser.Size = new System.Drawing.Size(141, 22);
             this.lblCodigoUser.TabIndex = 11;
             this.lblCodigoUser.Text = "Código de Usuario";
             // 
             // lblLugar
             // 
             this.lblLugar.AutoSize = true;
-            this.lblLugar.Location = new System.Drawing.Point(328, 112);
+            this.lblLugar.BackColor = System.Drawing.Color.Transparent;
+            this.lblLugar.Location = new System.Drawing.Point(328, 123);
             this.lblLugar.Name = "lblLugar";
-            this.lblLugar.Size = new System.Drawing.Size(50, 20);
+            this.lblLugar.Size = new System.Drawing.Size(50, 22);
             this.lblLugar.TabIndex = 10;
             this.lblLugar.Text = "Lugar";
             // 
             // lblComentario
             // 
             this.lblComentario.AutoSize = true;
-            this.lblComentario.Location = new System.Drawing.Point(34, 651);
+            this.lblComentario.BackColor = System.Drawing.Color.Transparent;
+            this.lblComentario.ForeColor = System.Drawing.Color.White;
+            this.lblComentario.Location = new System.Drawing.Point(34, 716);
             this.lblComentario.Name = "lblComentario";
-            this.lblComentario.Size = new System.Drawing.Size(91, 20);
+            this.lblComentario.Size = new System.Drawing.Size(94, 22);
             this.lblComentario.TabIndex = 11;
             this.lblComentario.Text = "Comentario";
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(164, 815);
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(141)))));
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
+            this.btnCancelar.Location = new System.Drawing.Point(12, 899);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(84, 32);
+            this.btnCancelar.Size = new System.Drawing.Size(111, 45);
             this.btnCancelar.TabIndex = 11;
             this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGrabar
             // 
-            this.btnGrabar.Location = new System.Drawing.Point(1023, 790);
+            this.btnGrabar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(141)))));
+            this.btnGrabar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnGrabar.ForeColor = System.Drawing.Color.White;
+            this.btnGrabar.Location = new System.Drawing.Point(791, 899);
             this.btnGrabar.Name = "btnGrabar";
-            this.btnGrabar.Size = new System.Drawing.Size(84, 32);
+            this.btnGrabar.Size = new System.Drawing.Size(111, 45);
             this.btnGrabar.TabIndex = 12;
             this.btnGrabar.Text = "Grabar";
-            this.btnGrabar.UseVisualStyleBackColor = true;
+            this.btnGrabar.UseVisualStyleBackColor = false;
             this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
             // dgvTareas
@@ -354,11 +377,11 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            this.dgvTareas.Location = new System.Drawing.Point(38, 229);
+            this.dgvTareas.Location = new System.Drawing.Point(38, 252);
             this.dgvTareas.Name = "dgvTareas";
             this.dgvTareas.RowHeadersWidth = 62;
             this.dgvTareas.RowTemplate.Height = 28;
-            this.dgvTareas.Size = new System.Drawing.Size(888, 150);
+            this.dgvTareas.Size = new System.Drawing.Size(888, 165);
             this.dgvTareas.TabIndex = 13;
             // 
             // Column1
@@ -398,9 +421,11 @@
             // 
             // frmRegistrarTareas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1228, 859);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1238, 956);
             this.Controls.Add(this.dgvTareas);
             this.Controls.Add(this.btnGrabar);
             this.Controls.Add(this.btnCancelar);
@@ -408,8 +433,10 @@
             this.Controls.Add(this.grpTarea);
             this.Controls.Add(this.txtComentario);
             this.Controls.Add(this.grpDetalle);
+            this.Font = new System.Drawing.Font("Impact", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmRegistrarTareas";
-            this.Text = "frmRegistrarTareas";
+            this.Text = "Registrar Tareas";
             this.Load += new System.EventHandler(this.frmRegistrarTareas_Load);
             this.grpDetalle.ResumeLayout(false);
             this.grpDetalle.PerformLayout();
@@ -436,9 +463,9 @@
         private System.Windows.Forms.GroupBox grpTarea;
         private System.Windows.Forms.Label lblLugar;
         private System.Windows.Forms.CheckBox cbEstudio;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblLicencia;
+        private System.Windows.Forms.Label lblFaltaUniforme;
+        private System.Windows.Forms.Label lblReclamo;
         private System.Windows.Forms.CheckBox cbEnfermedad;
         private System.Windows.Forms.CheckBox cbVacaciones;
         private System.Windows.Forms.CheckBox cbRecibo;

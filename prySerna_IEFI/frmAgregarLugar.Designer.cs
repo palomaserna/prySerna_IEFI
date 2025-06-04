@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAgregarLugar));
             this.lblIndicaccion = new System.Windows.Forms.Label();
             this.lblLugar = new System.Windows.Forms.Label();
             this.txtLugar = new System.Windows.Forms.TextBox();
@@ -37,49 +38,63 @@
             // lblIndicaccion
             // 
             this.lblIndicaccion.AutoSize = true;
-            this.lblIndicaccion.Location = new System.Drawing.Point(28, 71);
+            this.lblIndicaccion.BackColor = System.Drawing.Color.Transparent;
+            this.lblIndicaccion.Font = new System.Drawing.Font("Impact", 10F);
+            this.lblIndicaccion.ForeColor = System.Drawing.Color.White;
+            this.lblIndicaccion.Location = new System.Drawing.Point(12, 69);
             this.lblIndicaccion.Name = "lblIndicaccion";
-            this.lblIndicaccion.Size = new System.Drawing.Size(233, 20);
+            this.lblIndicaccion.Size = new System.Drawing.Size(268, 25);
             this.lblIndicaccion.TabIndex = 18;
             this.lblIndicaccion.Text = "Complete para agregar un lugar";
             // 
             // lblLugar
             // 
             this.lblLugar.AutoSize = true;
-            this.lblLugar.Location = new System.Drawing.Point(39, 134);
+            this.lblLugar.BackColor = System.Drawing.Color.Transparent;
+            this.lblLugar.Font = new System.Drawing.Font("Impact", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLugar.ForeColor = System.Drawing.Color.White;
+            this.lblLugar.Location = new System.Drawing.Point(51, 184);
             this.lblLugar.Name = "lblLugar";
-            this.lblLugar.Size = new System.Drawing.Size(50, 20);
+            this.lblLugar.Size = new System.Drawing.Size(57, 25);
             this.lblLugar.TabIndex = 19;
             this.lblLugar.Text = "Lugar";
             // 
             // txtLugar
             // 
-            this.txtLugar.Location = new System.Drawing.Point(112, 131);
+            this.txtLugar.Location = new System.Drawing.Point(141, 184);
             this.txtLugar.Name = "txtLugar";
-            this.txtLugar.Size = new System.Drawing.Size(218, 26);
+            this.txtLugar.Size = new System.Drawing.Size(218, 29);
             this.txtLugar.TabIndex = 20;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(106, 212);
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(141)))));
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAgregar.Font = new System.Drawing.Font("Impact", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.ForeColor = System.Drawing.Color.White;
+            this.btnAgregar.Location = new System.Drawing.Point(141, 270);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(166, 54);
+            this.btnAgregar.Size = new System.Drawing.Size(166, 59);
             this.btnAgregar.TabIndex = 21;
             this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // frmAgregarLugar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(529, 450);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(529, 495);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtLugar);
             this.Controls.Add(this.lblLugar);
             this.Controls.Add(this.lblIndicaccion);
+            this.Font = new System.Drawing.Font("Impact", 9F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAgregarLugar";
-            this.Text = "frmAgregarLugar";
+            this.Text = "Agregar un Lugar";
             this.Load += new System.EventHandler(this.frmAgregarLugar_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

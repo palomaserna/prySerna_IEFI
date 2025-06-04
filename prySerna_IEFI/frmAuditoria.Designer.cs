@@ -39,6 +39,7 @@
             this.dgvAuditoria.Location = new System.Drawing.Point(106, 114);
             this.dgvAuditoria.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvAuditoria.Name = "dgvAuditoria";
+            this.dgvAuditoria.ReadOnly = true;
             this.dgvAuditoria.RowHeadersWidth = 62;
             this.dgvAuditoria.Size = new System.Drawing.Size(958, 488);
             this.dgvAuditoria.TabIndex = 0;

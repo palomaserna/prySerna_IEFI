@@ -28,9 +28,15 @@ namespace prySerna_IEFI
             {
                 conexion.Open();
                 SqlCommand comando = new SqlCommand("SELECT Id, Nombre FROM TareasTipo", conexion);
+
                 SqlDataAdapter adaptador = new SqlDataAdapter(comando);
                 DataTable dt = new DataTable();
                 adaptador.Fill(dt);
+                DataRow filaTodos = dt.NewRow();
+                filaTodos["Id"] = 0;
+                filaTodos["Nombre"] = "Todos";
+                dt.Rows.InsertAt(filaTodos, 0);
+
                 cmbTarea.DataSource = dt;
                 cmbTarea.DisplayMember = "Nombre";
                 cmbTarea.ValueMember = "Id";
@@ -39,9 +45,15 @@ namespace prySerna_IEFI
             {
                 conexion.Open();
                 SqlCommand comando = new SqlCommand("SELECT Id, Nombre FROM Lugar", conexion);
+
                 SqlDataAdapter adaptador = new SqlDataAdapter(comando);
                 DataTable dt = new DataTable();
                 adaptador.Fill(dt);
+                DataRow filaTodos = dt.NewRow();
+                filaTodos["Id"] = 0;
+                filaTodos["Nombre"] = "Todos";
+                dt.Rows.InsertAt(filaTodos, 0);
+
                 cmbLugar.DataSource = dt;
                 cmbLugar.DisplayMember = "Nombre";
                 cmbLugar.ValueMember = "Id";
@@ -52,7 +64,7 @@ namespace prySerna_IEFI
             clsConexión BD = new clsConexión();
             string query = "SELECT * FROM Tareas WHERE IdUsuario = @IdUsuario";
 
-            using (SqlConnection conexion= new SqlConnection(BD.cadenaConexion))
+            using (SqlConnection conexion = new SqlConnection(BD.cadenaConexion))
             using (SqlCommand comando = new SqlCommand(query, conexion))
             {
                 comando.Parameters.AddWithValue("@IdUsuario", IdUsuario);
@@ -66,47 +78,74 @@ namespace prySerna_IEFI
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            clsConexión BD = new clsConexión();
-            string query = "SELECT * FROM Tareas WHERE IdUsuario = @IdUsuario";
-
-            using (SqlConnection conexion = new SqlConnection(BD.cadenaConexion))
-            using (SqlCommand comando = new SqlCommand())
+            try
             {
-                comando.Connection = conexion;
-                comando.Parameters.AddWithValue("@IdUsuario", IdUsuario);
+                clsConexión BD = new clsConexión();
 
-                // Validar filtro por Tarea
-                if (cmbTarea.SelectedIndex != -1 && cmbTarea.SelectedValue != null)
+                string query = @"
+                 SELECT 
+                 T.Fecha,
+                 L.Nombre AS Lugar,
+                 TA.Nombre AS Tarea,
+                 T.Comentario,
+                 T.Insumo,
+                 T.Estudio,
+                 T.Vacaciones,
+                 T.Enfermedad,
+                 T.Salario,
+                 T.Recibo
+                 FROM Tareas T
+                 JOIN Lugar L ON T.LugarId = L.Id
+                 JOIN TareasTipo TA ON T.TareaId = TA.Id
+                 WHERE T.IdUsuario = @IdUsuario";
+
+                using (SqlConnection conexion = new SqlConnection(BD.cadenaConexion))
+                using (SqlCommand comando = new SqlCommand())
                 {
-                    query += " AND TareaId = @TareaId";
-                    comando.Parameters.AddWithValue("@TareaId", cmbTarea.SelectedValue);
+                    comando.Connection = conexion;
+                    comando.Parameters.AddWithValue("@IdUsuario", IdUsuario);
+
+
+                    if (cmbTarea.SelectedIndex > 0 && cmbTarea.SelectedValue != null)
+                    {
+                        query += " AND T.TareaId = @TareaId";
+                        comando.Parameters.AddWithValue("@TareaId", cmbTarea.SelectedValue);
+                    }
+
+                    if (cmbLugar.SelectedIndex > 0 && cmbLugar.SelectedValue != null)
+                    {
+                        query += " AND T.LugarId = @LugarId";
+                        comando.Parameters.AddWithValue("@LugarId", cmbLugar.SelectedValue);
+                    }
+
+                    if (dtFecha.ShowCheckBox && dtFecha.Checked)
+                    {
+                        DateTime fechaInicio = dtFecha.Value.Date;
+                        DateTime fechaFin = fechaInicio.AddDays(1);
+
+                        query += " AND T.Fecha >= @FechaInicio AND T.Fecha < @FechaFin";
+                        comando.Parameters.AddWithValue("@FechaInicio", fechaInicio);
+                        comando.Parameters.AddWithValue("@FechaFin", fechaFin);
+                    }
+
+                    comando.CommandText = query;
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(comando);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dgvTareas.DataSource = dt;
+
                 }
 
-                // Validar filtro por Lugar
-                if (cmbLugar.SelectedIndex != -1 && cmbLugar.SelectedValue != null)
-                {
-                    query += " AND LugarId = @LugarId";
-                    comando.Parameters.AddWithValue("@LugarId", cmbLugar.SelectedValue);
-                }
 
-                
-                if (dtFecha.ShowCheckBox && dtFecha.Checked)
-                {
-                    DateTime fechaInicio = dtFecha.Value.Date;
-                    DateTime fechaFin = fechaInicio.AddDays(1);
 
-                    query += " AND Fecha >= @FechaInicio AND Fecha < @FechaFin";
-                    comando.Parameters.AddWithValue("@FechaInicio", fechaInicio);
-                    comando.Parameters.AddWithValue("@FechaFin", fechaFin);
-                }
 
-                comando.CommandText = query;
-
-                SqlDataAdapter adapter = new SqlDataAdapter(comando);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                dgvTareas.DataSource = dt;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se pudo buscar la tarea" + ex.Message);
+            }
+
         }
     }
 }
