@@ -27,31 +27,7 @@ namespace prySerna_IEFI
 
             clsConexión BD = new clsConexión();
             BD.CargarGestion(dgvUsuarios);
-           /* if (RolUsuario == "Usuario")
-            {
-               
-                txtRol.Enabled = false;
-                txtEstado.Enabled = false;
-                dtFechaC.Enabled = false;
-                dtUltimaC.Enabled = false;
-                mskTiempoTotal.Enabled = false;
-                mskTiempoU.Enabled = false;
-
-                btnAgregar.Visible = false;
-                btnEliminar.Visible = false;
-                grpTiempo.Visible = false;
-                var usuario = BD.CargarSoloEsteUsuario(UsuarioActual);
-                if (usuario != null)
-                {
-                    txtUsuario.Text = usuario.Usuario;
-                    txtContraseña.Text = usuario.Contraseña;
-                }
-
-            }
-            else if (RolUsuario == "Administrador")
-            {
-                BD.CargarUsuarios(dgvUsuarios);
-            *///}
+           
 
         }
 
@@ -65,13 +41,15 @@ namespace prySerna_IEFI
                     Usuario.IdUsuario = Convert.ToInt32(nmCodigo.Value);
                     Usuario.Usuario = txtUsuario.Text;
                     Usuario.Contraseña = txtContraseña.Text;
-                    Usuario.Rol = cmbRol.Text;
+                   // Usuario.Rol = cmbRol.Text;
+                   Usuario.Rol=txtRol.Text;
                     Usuario.Direccion=txtDirección.Text;
-                    Usuario.Dni=int.Parse(txtDni.Text);
+                    Usuario.Dni=long.Parse(txtDni.Text);
                    
-                   Usuario.Telefono = int.Parse(txtTeléfono.Text);
+                   Usuario.Telefono = long.Parse(txtTeléfono.Text);
                     Usuario.Gmail=txtGmail.Text;
-                    Usuario.Estado=cmbEstado.Text;
+                  //  Usuario.Estado=cmbEstado.Text;
+                  Usuario.Estado=txtEstado.Text;
                     Usuario.FechaCreacion = DateTime.Parse(mkFecha.Text);
                     BD.Agregar(Usuario);
                     BD.CargarGestion(dgvUsuarios);
@@ -92,25 +70,19 @@ namespace prySerna_IEFI
                     Usuario.IdUsuario = Convert.ToInt32(nmCodigo.Value);
                     Usuario.Usuario = txtUsuario.Text;
                     Usuario.Contraseña = txtContraseña.Text;
-                    Usuario.Rol = cmbRol.Text;
+                    //Usuario.Rol = cmbRol.Text;
+                    Usuario.Rol=txtRol.Text;
                     Usuario.Direccion = txtDirección.Text;
-                    Usuario.Dni = int.Parse(txtDni.Text);
+                    Usuario.Dni = long.Parse(txtDni.Text);
                     
-                    Usuario.Telefono = int.Parse(txtTeléfono.Text);
+                    Usuario.Telefono = long.Parse(txtTeléfono.Text);
                     Usuario.Gmail = txtGmail.Text;
-                    Usuario.Estado = cmbEstado.Text;
+                  //  Usuario.Estado = cmbEstado.Text;
+                  Usuario.Estado = txtEstado.Text;
                     Usuario.FechaCreacion = DateTime.Parse(mkFecha.Text);
                     BD.Modificar(Usuario);
                     BD.CargarGestion(dgvUsuarios);
-                    /*if (RolUsuario == "Usuario")
-                    {
-                        Usuario.Rol = null; // o no se asigna
-                        Usuario.Estado = null;
-                        Usuario.FechaCreacion = DateTime.MinValue;
-                        Usuario.UltimaConexion = DateTime.MinValue;
-                        Usuario.TiempoUltimaConexion = TimeSpan.Zero;
-                        Usuario.TiempoTotal = TimeSpan.Zero;
-                    *///}
+                   
                 };
             }
             catch (Exception ex)
@@ -131,12 +103,14 @@ namespace prySerna_IEFI
                     Usuario.IdUsuario=Convert.ToInt32(nmCodigo.Value);
                     Usuario.Usuario = txtUsuario.Text;
                     Usuario.Contraseña = txtContraseña.Text;
-                    Usuario.Rol = cmbRol.Text;
+                   // Usuario.Rol = cmbRol.Text;
+                   Usuario.Rol=txtRol.Text;
                     Usuario.Direccion = txtDirección.Text;
-                    Usuario.Dni =   int.Parse(txtDni.Text);
-                    Usuario.Telefono = int.Parse(txtTeléfono.Text);
+                    Usuario.Dni =   long.Parse(txtDni.Text);
+                    Usuario.Telefono = long.Parse(txtTeléfono.Text);
                     Usuario.Gmail = txtGmail.Text;
-                    Usuario.Estado = cmbEstado.Text;
+                    //Usuario.Estado = cmbEstado.Text;
+                    Usuario.Estado = txtEstado.Text;
                     Usuario.FechaCreacion = DateTime.Parse(mkFecha.Text);
                     BD.Eliminar(Usuario);
                     BD.CargarGestion(dgvUsuarios);
@@ -159,15 +133,20 @@ namespace prySerna_IEFI
             {
 
                 DataGridViewRow fila = dgvUsuarios.Rows[e.RowIndex];
-                nmCodigo.Value = Convert.ToInt32(fila.Cells["Codigo"].Value);
+                nmCodigo.Value = Convert.ToInt32(fila.Cells["IdUsuario"].Value);
                 txtUsuario.Text = fila.Cells["Usuario"].Value.ToString();
                 txtContraseña.Text = fila.Cells["Contraseña"].Value.ToString();
-                cmbRol.SelectedItem = fila.Cells["Rol"].Value.ToString();
+                txtRol.Text = fila.Cells["Rol"].Value.ToString();
                 txtDirección.Text = fila.Cells["Direccion"].Value.ToString();
                 txtDni.Text = fila.Cells["Dni"].Value.ToString();
                 txtTeléfono.Text = fila.Cells["Telefono"].Value.ToString();
                 txtGmail.Text = fila.Cells["Gmail"].Value.ToString();
-                cmbEstado.SelectedItem = fila.Cells["Estado"].Value.ToString();
+                txtEstado.Text = fila.Cells["Estado"].Value.ToString();
+                if (fila.Cells["FechaCreacion"].Value != DBNull.Value)
+                {
+                    mkFecha.Text = Convert.ToDateTime(fila.Cells["FechaCreacion"].Value).ToString("dd/MM/yyyy");
+                }
+                //cmbEstado.SelectedItem = fila.Cells["Estado"].Value.ToString();
                 //tiempo
             }
         }

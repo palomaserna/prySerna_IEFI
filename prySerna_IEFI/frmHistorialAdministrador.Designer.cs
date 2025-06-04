@@ -133,6 +133,7 @@
             this.btnBuscar.TabIndex = 3;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // cmbLugar
             // 
@@ -176,6 +177,7 @@
             this.Controls.Add(this.grpTarea);
             this.Name = "frmHistorialAdministrador";
             this.Text = "frmHistorialAdministrador";
+            this.Load += new System.EventHandler(this.frmHistorialAdministrador_Load);
             this.grpTarea.ResumeLayout(false);
             this.grpTarea.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmCodigo)).EndInit();

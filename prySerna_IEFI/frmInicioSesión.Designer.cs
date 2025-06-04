@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInicioSesión));
             this.grpUsuario = new System.Windows.Forms.GroupBox();
-            this.btnRegistro = new System.Windows.Forms.Button();
+            this.lblRegistro = new System.Windows.Forms.Label();
             this.btnEntrar = new System.Windows.Forms.Button();
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.txtUsuario = new System.Windows.Forms.TextBox();
@@ -43,7 +43,7 @@
             // 
             this.grpUsuario.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("grpUsuario.BackgroundImage")));
             this.grpUsuario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.grpUsuario.Controls.Add(this.btnRegistro);
+            this.grpUsuario.Controls.Add(this.lblRegistro);
             this.grpUsuario.Controls.Add(this.btnEntrar);
             this.grpUsuario.Controls.Add(this.txtContraseña);
             this.grpUsuario.Controls.Add(this.txtUsuario);
@@ -60,19 +60,19 @@
             this.grpUsuario.TabStop = false;
             this.grpUsuario.Text = "Usuario";
             // 
-            // btnRegistro
+            // lblRegistro
             // 
-            this.btnRegistro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(141)))));
-            this.btnRegistro.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRegistro.Font = new System.Drawing.Font("Impact", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistro.Location = new System.Drawing.Point(130, 263);
-            this.btnRegistro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnRegistro.Name = "btnRegistro";
-            this.btnRegistro.Size = new System.Drawing.Size(192, 35);
-            this.btnRegistro.TabIndex = 5;
-            this.btnRegistro.Text = "Registarme";
-            this.btnRegistro.UseVisualStyleBackColor = false;
-            this.btnRegistro.Click += new System.EventHandler(this.btnRegistro_Click);
+            this.lblRegistro.AutoSize = true;
+            this.lblRegistro.BackColor = System.Drawing.Color.Transparent;
+            this.lblRegistro.Font = new System.Drawing.Font("Impact", 9F);
+            this.lblRegistro.ForeColor = System.Drawing.Color.Transparent;
+            this.lblRegistro.Location = new System.Drawing.Point(65, 256);
+            this.lblRegistro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRegistro.Name = "lblRegistro";
+            this.lblRegistro.Size = new System.Drawing.Size(257, 22);
+            this.lblRegistro.TabIndex = 5;
+            this.lblRegistro.Text = "¿No tiene un usuario?  ¡Registrate!";
+            this.lblRegistro.Click += new System.EventHandler(this.lblRegistro_Click);
             // 
             // btnEntrar
             // 
@@ -152,12 +152,12 @@
         #endregion
 
         private System.Windows.Forms.GroupBox grpUsuario;
-        private System.Windows.Forms.Button btnRegistro;
         private System.Windows.Forms.Button btnEntrar;
         private System.Windows.Forms.TextBox txtContraseña;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.Label lblContraseña;
         private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.Label lblRegistro;
     }
 }
 

@@ -14,11 +14,17 @@ namespace prySerna_IEFI
     {
         public string RolUsuario { get; set; }
         public string UsuarioN {  get; set; }
+       
+        private int IdUsuario;
+        
 
-        public frmPrincipal()
+        public frmPrincipal(int idUsuario, string usuario, string rol)
         {
             InitializeComponent();
             this.FormClosing += frmPrincipal_FormClosing;
+            IdUsuario = idUsuario;
+            UsuarioN = usuario;
+            RolUsuario = rol;
         }
         
         int tiempo = 0;
@@ -89,7 +95,7 @@ namespace prySerna_IEFI
 
         private void historialDeTareasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmHistorialTarea v = new frmHistorialTarea();
+            frmHistorialTarea v = new frmHistorialTarea(IdUsuario);
             v.ShowDialog();
         }
 

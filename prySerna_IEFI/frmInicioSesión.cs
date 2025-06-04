@@ -36,9 +36,9 @@ namespace prySerna_IEFI
             if (idUsuario>0)
             {
                 //frmPrincipal principal = new frmPrincipal(idUsuario, Inicio.Usuario);
-                frmPrincipal principal = new frmPrincipal();
-                principal.UsuarioN=Inicio.Usuario;
-                principal.RolUsuario = Inicio.Rol;
+                frmPrincipal principal = new frmPrincipal(idUsuario, Inicio.Usuario, Inicio.Rol);
+                //principal.UsuarioN=Inicio.Usuario;
+                //principal.RolUsuario = Inicio.Rol;
                 principal.Show();
                 this.Hide();
             }
@@ -79,11 +79,11 @@ namespace prySerna_IEFI
             if (txtUsuario.Text != "" && txtContraseña.Text != "")
             {
                 btnEntrar.Enabled = true;
-                btnRegistro.Enabled = true;
+               
             }
             else
             {
-                btnRegistro.Enabled = false;
+                
                 btnEntrar.Enabled = false;
             }
         }
@@ -96,6 +96,12 @@ namespace prySerna_IEFI
         private void txtContraseña_TextChanged(object sender, EventArgs e)
         {
             ValidarDatos();
+        }
+
+        private void lblRegistro_Click(object sender, EventArgs e)
+        {
+            frmRegistrarUsuario v= new frmRegistrarUsuario();
+            v.ShowDialog();
         }
     }
 }

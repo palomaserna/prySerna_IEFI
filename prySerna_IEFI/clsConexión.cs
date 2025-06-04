@@ -12,7 +12,8 @@ namespace prySerna_IEFI
 {
     public class clsConexión
     {
-      
+        public string Rol { get; set; } = "Usuario";
+
         public string cadenaConexion;
         public clsConexión()
         {
@@ -71,11 +72,15 @@ namespace prySerna_IEFI
                 {
                     conexion.Open();
 
-                    string query = "INSERT INTO Usuarios (Usuario, Contraseña) VALUES (@Usuario, @Contraseña); SELECT SCOPE_IDENTITY();";
+                    string query = "INSERT INTO Usuarios (Usuario, Contraseña, Direccion, Dni, Telefono, Gmail, Rol) VALUES (@Usuario, @Contraseña, @Direccion, @Dni, @Telefono, @Gmail, @Rol); SELECT SCOPE_IDENTITY();";
                     SqlCommand comando = new SqlCommand(query, conexion);
                     comando.Parameters.AddWithValue("@Usuario", Usuario.Usuario);
                     comando.Parameters.AddWithValue("@Contraseña", Usuario.Contraseña);
-
+                    comando.Parameters.AddWithValue("@Direccion", Usuario.Direccion);
+                    comando.Parameters.AddWithValue("@Dni", Usuario.Dni);
+                    comando.Parameters.AddWithValue("@Telefono", Usuario.Telefono);
+                    comando.Parameters.AddWithValue("@Gmail", Usuario.Gmail);
+                    comando.Parameters.AddWithValue("@Rol", Usuario.Rol);
                     object resultado = comando.ExecuteScalar();
                     nuevoIdUsuario = Convert.ToInt32(resultado);
 
@@ -213,6 +218,7 @@ namespace prySerna_IEFI
                                    "VALUES (@Usuario, @Contraseña, @Rol, @Direccion, @Dni, @Telefono, @Gmail, @Estado, @FechaCreacion)";
 
                     SqlCommand comando = new SqlCommand(query, conexion);
+
                     comando.Parameters.AddWithValue("@Usuario", Usuario.Usuario);
                     comando.Parameters.AddWithValue("@Contraseña", Usuario.Contraseña);
                     comando.Parameters.AddWithValue("@Rol", Usuario.Rol);
@@ -220,6 +226,8 @@ namespace prySerna_IEFI
                     comando.Parameters.AddWithValue("@Dni", Usuario.Dni);
                     comando.Parameters.AddWithValue("@Telefono", Usuario.Telefono);
                     comando.Parameters.AddWithValue("@Gmail", Usuario.Gmail);
+                    comando.Parameters.AddWithValue("@Estado", Usuario.Estado);
+                    comando.Parameters.AddWithValue("@FechaCreacion", Usuario.FechaCreacion);
 
                     comando.ExecuteNonQuery();
                 }
@@ -240,6 +248,7 @@ namespace prySerna_IEFI
                     string query = "UPDATE Usuarios SET Usuario=@Usuario, Contraseña=@Contraseña, Rol= @Rol, Direccion= @Direccion, Dni= @Dni, Telefono= @Telefono, Gmail= @Gmail, Estado=@Estado, FechaCreacion=@FechaCreacion WHERE IdUsuario=@IdUsuario ";
                                 
                     SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@IdUsuario", Usuario.IdUsuario);
                     comando.Parameters.AddWithValue("@Usuario", Usuario.Usuario);
                     comando.Parameters.AddWithValue("@Contraseña", Usuario.Contraseña);
                     comando.Parameters.AddWithValue("@Rol", Usuario.Rol);
@@ -247,7 +256,9 @@ namespace prySerna_IEFI
                     comando.Parameters.AddWithValue("@Dni", Usuario.Dni);
                     comando.Parameters.AddWithValue("@Telefono", Usuario.Telefono);
                     comando.Parameters.AddWithValue("@Gmail", Usuario.Gmail);
-                    
+                    comando.Parameters.AddWithValue("@Estado", Usuario.Estado);
+                    comando.Parameters.AddWithValue("@FechaCreacion", Usuario.FechaCreacion);
+
                     comando.ExecuteNonQuery();
                 }
             }
@@ -275,28 +286,7 @@ namespace prySerna_IEFI
                 MessageBox.Show("Error al eliminar el usuario: " + ex.Message);
             }
         }
-        /* public clsUsuario CargarSoloEsteUsuario(string nombreUsuario)
-         {
-             clsUsuario usuario = null;
-             using (SqlConnection conn = new SqlConnection(cadenaConexion))
-             {
-                 string query = "SELECT * FROM Usuarios WHERE Usuario = @Usuario";
-                 SqlCommand cmd = new SqlCommand(query, conn);
-                 cmd.Parameters.AddWithValue("@Usuario", nombreUsuario);
-                 conn.Open();
-                 SqlDataReader reader = cmd.ExecuteReader();
-                 if (reader.Read())
-                 {
-                     usuario = new clsUsuario
-                     {
-                         Usuario = reader["Usuario"].ToString(),
-                         Contraseña = reader["Contraseña"].ToString(),
-                         // Otros campos si se necesitan
-                     };
-                 }
-             }
-             return usuario;
-         *///}
+        
 
         public void AgregarTareaTipo(string nombre)
         {
@@ -395,6 +385,93 @@ namespace prySerna_IEFI
                 MessageBox.Show("Error al agregar la tarea: " + ex.Message);
             }
         }
+
+
+        public DataTable BuscarTareas(int IdUsuario, string usuario, DateTime fecha, int tareaId, int lugarId)
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                string query = @"
+            SELECT 
+                T.IdUsuario,
+                T.Usuario,
+                T.Fecha,
+                T.Insumo,
+                T.Estudio,
+                T.Vacaciones,
+                T.Enfermedad,
+                T.Salario,
+                T.Recibo,
+                T.Comentario,
+                TT.Nombre AS TareaNombre,
+                L.Nombre AS LugarNombre
+            FROM 
+                Tareas T
+            INNER JOIN TareasTipo TT ON T.TareaId = TT.Id
+            INNER JOIN Lugar L ON T.LugarId = L.Id
+            WHERE 1=1";
+
+                List<SqlParameter> parametros = new List<SqlParameter>();
+
+                if (IdUsuario > 0)
+                {
+                    query += " AND T.IdUsuario= @IdUsuario";
+                    parametros.Add(new SqlParameter("@IdUsuario", IdUsuario));
+                }
+
+                if (!string.IsNullOrWhiteSpace(usuario))
+                {
+                    query += " AND T.Usuario LIKE @Usuario";
+                    parametros.Add(new SqlParameter("@Usuario", "%" + usuario + "%"));
+                }
+                // if (fecha != DateTime.MinValue)
+                //{
+                //  query += " AND T.Fecha >= @Fecha AND T.Fecha < DATEADD(day, 1, @Fecha)";
+                //parametros.Add(new SqlParameter("@Fecha", fecha.Date));
+                //}
+                if (fecha != DateTime.MinValue)
+                {
+                    query += " AND T.Fecha >= @FechaInicio AND T.Fecha < @FechaFin";
+                    parametros.Add(new SqlParameter("@FechaInicio", fecha.Date));
+                    parametros.Add(new SqlParameter("@FechaFin", fecha.Date.AddDays(1)));
+                }
+
+                if (tareaId > 0)
+                {
+                    query += " AND T.TareaId = @TareaId";
+                    parametros.Add(new SqlParameter("@TareaId", tareaId));
+                }
+
+                if (lugarId > 0)
+                {
+                    query += " AND T.LugarId = @LugarId";
+                    parametros.Add(new SqlParameter("@LugarId", lugarId));
+                }
+
+                using (SqlConnection con = new SqlConnection(cadenaConexion))
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        if (parametros.Count > 0)
+                            cmd.Parameters.AddRange(parametros.ToArray());
+
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(dt);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Te conviene loguear el error real en producción
+                throw new Exception("Error al buscar tareas: " + ex.Message);
+            }
+
+            return dt;
+        }
+
 
 
 
