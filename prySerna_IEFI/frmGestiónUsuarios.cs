@@ -62,14 +62,14 @@ namespace prySerna_IEFI
                     Usuario.IdUsuario = Convert.ToInt32(nmCodigo.Value);
                     Usuario.Usuario = txtUsuario.Text;
                     Usuario.Contraseña = txtContraseña.Text;
-                    //Usuario.Rol = cmbRol.Text;
+                  
                     Usuario.Rol=txtRol.Text;
                     Usuario.Direccion = txtDirección.Text;
                     Usuario.Dni = long.Parse(txtDni.Text);
                     
                     Usuario.Telefono = long.Parse(txtTeléfono.Text);
                     Usuario.Gmail = txtGmail.Text;
-                  //  Usuario.Estado = cmbEstado.Text;
+                 
                   Usuario.Estado = txtEstado.Text;
                     Usuario.FechaCreacion = DateTime.Parse(mkFecha.Text);
                     BD.Modificar(Usuario);

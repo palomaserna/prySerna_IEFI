@@ -28,9 +28,6 @@ namespace prySerna_IEFI
         {
             clsConexión BD = new clsConexión();
             
-            //BD.CargarTarea(dgvTareas);
-          //  BD.CargarTareaPorUsuario(dgvTareas, UsuarioN);
-
             using (SqlConnection conexion = new SqlConnection(BD.cadenaConexion))
             {
                 conexion.Open();
@@ -83,23 +80,13 @@ namespace prySerna_IEFI
         {
             try
             {
-                // Limpiar grilla si ya tiene datos
-                if (dgvTareas.DataSource != null)
-                {
-                    dgvTareas.DataSource = null;
-                }
-                else
-                {
-                    dgvTareas.Rows.Clear();
-                }
-
-                // Agregar nueva fila
+               
                 dgvTareas.Rows.Add(
                     Convert.ToInt32(nmCodigo.Value),
                     txtUsuario.Text,
                     dtFecha.Value.ToShortDateString(),
-                    cmbTarea.Text,  // Asegúrate que tiene ValueMember correcto
-                    cmbLugar.Text   // Igual que arriba
+                    cmbTarea.Text, 
+                    cmbLugar.Text   
                 );
             }
             catch (Exception ex)
@@ -129,11 +116,11 @@ namespace prySerna_IEFI
                 tarea.Usuario = fila.Cells[1].Value.ToString();
                 tarea.Fecha = DateTime.Parse(fila.Cells[2].Value.ToString());
 
-                // Buscar los IDs seleccionados (ya que en grilla guardaste solo texto)
+             
                 tarea.TareaId = Convert.ToInt32(cmbTarea.SelectedValue);
                 tarea.LugarId = Convert.ToInt32(cmbLugar.SelectedValue);
 
-                // Checkboxes
+               
                 tarea.Insumo = cbInsumo.Checked;
                 tarea.Estudio = cbEstudio.Checked;
                 tarea.Vacaciones = cbVacaciones.Checked;
@@ -141,13 +128,13 @@ namespace prySerna_IEFI
                 tarea.Salario = cbSalario.Checked;
                 tarea.Recibo = cbRecibo.Checked;
 
-                // Comentario
+                
                 tarea.Comentario = txtComentario.Text;
 
                 conexion.GrabarTarea(tarea);
                 MessageBox.Show("Tarea grabada correctamente.");
 
-                // Limpiar controles
+                
                 dgvTareas.Rows.Clear();
                 nmCodigo.Value = 0;
                 txtUsuario.Clear();

@@ -347,23 +347,7 @@ namespace prySerna_IEFI
             }
 
         }
-        public void CargarTareaPorUsuario(DataGridView grilla, string nombreUsuario)
-        {
-            using (SqlConnection conexion = new SqlConnection(cadenaConexion))
-            {
-                conexion.Open();
-                string query = "SELECT IdUsuario, Usuario, Fecha, TareaId, LugarId FROM Tareas WHERE Usuario = @Usuario";
-                SqlCommand comando = new SqlCommand(query, conexion);
-                comando.Parameters.AddWithValue("@Usuario", nombreUsuario);
-
-                SqlDataAdapter adaptador = new SqlDataAdapter(comando);
-                DataTable dt = new DataTable();
-                adaptador.Fill(dt);
-
-                grilla.AutoGenerateColumns = true; // Solo si definiste las columnas manualmente
-                grilla.DataSource = dt;
-            }
-        }
+       
 
         public void GrabarTarea(clsTarea Tarea)
         {
