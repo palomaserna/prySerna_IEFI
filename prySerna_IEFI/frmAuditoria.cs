@@ -23,9 +23,6 @@ namespace prySerna_IEFI
             BD.CargarUsuarios(dgvAuditoria);
         }
 
-        private void frmAuditoria_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            
-        }
+        
     }
 }

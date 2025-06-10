@@ -56,7 +56,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmAuditoria";
             this.Text = "Auditoria";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAuditoria_FormClosing);
+           
             this.Load += new System.EventHandler(this.frmAuditoria_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAuditoria)).EndInit();
             this.ResumeLayout(false);
