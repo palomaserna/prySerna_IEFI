@@ -17,7 +17,7 @@ namespace prySerna_IEFI
             InitializeComponent();
         }
       
-  int IntentosFallidos = 0;
+      int IntentosFallidos = 0;
         private void frmInicioSesión_Load(object sender, EventArgs e)
         {
             clsConexión conexion = new clsConexión();
@@ -35,10 +35,7 @@ namespace prySerna_IEFI
 
             if (idUsuario>0)
             {
-                //frmPrincipal principal = new frmPrincipal(idUsuario, Inicio.Usuario);
                 frmPrincipal principal = new frmPrincipal(idUsuario, Inicio.Usuario, Inicio.Rol);
-                //principal.UsuarioN=Inicio.Usuario;
-                //principal.RolUsuario = Inicio.Rol;
                 principal.Show();
                 this.Hide();
             }
