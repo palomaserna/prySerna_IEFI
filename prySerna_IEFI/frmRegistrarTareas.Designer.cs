@@ -98,7 +98,7 @@
             // 
             this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(141)))));
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAgregar.Location = new System.Drawing.Point(945, 138);
+            this.btnAgregar.Location = new System.Drawing.Point(874, 123);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(105, 41);
             this.btnAgregar.TabIndex = 3;
@@ -117,7 +117,7 @@
             // cbInsumo
             // 
             this.cbInsumo.AutoSize = true;
-            this.cbInsumo.Location = new System.Drawing.Point(72, 97);
+            this.cbInsumo.Location = new System.Drawing.Point(64, 78);
             this.cbInsumo.Name = "cbInsumo";
             this.cbInsumo.Size = new System.Drawing.Size(89, 26);
             this.cbInsumo.TabIndex = 6;
@@ -135,9 +135,9 @@
             this.grpDetalle.Controls.Add(this.lblLicencia);
             this.grpDetalle.Controls.Add(this.lblFaltaUniforme);
             this.grpDetalle.Controls.Add(this.cbInsumo);
-            this.grpDetalle.Location = new System.Drawing.Point(38, 450);
+            this.grpDetalle.Location = new System.Drawing.Point(12, 354);
             this.grpDetalle.Name = "grpDetalle";
-            this.grpDetalle.Size = new System.Drawing.Size(738, 245);
+            this.grpDetalle.Size = new System.Drawing.Size(738, 221);
             this.grpDetalle.TabIndex = 7;
             this.grpDetalle.TabStop = false;
             this.grpDetalle.Text = "Detalle";
@@ -145,7 +145,7 @@
             // cbRecibo
             // 
             this.cbRecibo.AutoSize = true;
-            this.cbRecibo.Location = new System.Drawing.Point(571, 151);
+            this.cbRecibo.Location = new System.Drawing.Point(555, 128);
             this.cbRecibo.Name = "cbRecibo";
             this.cbRecibo.Size = new System.Drawing.Size(87, 26);
             this.cbRecibo.TabIndex = 14;
@@ -155,7 +155,7 @@
             // cbSalario
             // 
             this.cbSalario.AutoSize = true;
-            this.cbSalario.Location = new System.Drawing.Point(571, 97);
+            this.cbSalario.Location = new System.Drawing.Point(554, 78);
             this.cbSalario.Name = "cbSalario";
             this.cbSalario.Size = new System.Drawing.Size(88, 26);
             this.cbSalario.TabIndex = 17;
@@ -165,7 +165,7 @@
             // lblReclamo
             // 
             this.lblReclamo.AutoSize = true;
-            this.lblReclamo.Location = new System.Drawing.Point(527, 55);
+            this.lblReclamo.Location = new System.Drawing.Point(525, 42);
             this.lblReclamo.Name = "lblReclamo";
             this.lblReclamo.Size = new System.Drawing.Size(74, 22);
             this.lblReclamo.TabIndex = 16;
@@ -174,7 +174,7 @@
             // cbEnfermedad
             // 
             this.cbEnfermedad.AutoSize = true;
-            this.cbEnfermedad.Location = new System.Drawing.Point(293, 206);
+            this.cbEnfermedad.Location = new System.Drawing.Point(293, 183);
             this.cbEnfermedad.Name = "cbEnfermedad";
             this.cbEnfermedad.Size = new System.Drawing.Size(121, 26);
             this.cbEnfermedad.TabIndex = 15;
@@ -184,7 +184,7 @@
             // cbVacaciones
             // 
             this.cbVacaciones.AutoSize = true;
-            this.cbVacaciones.Location = new System.Drawing.Point(293, 151);
+            this.cbVacaciones.Location = new System.Drawing.Point(293, 128);
             this.cbVacaciones.Name = "cbVacaciones";
             this.cbVacaciones.Size = new System.Drawing.Size(121, 26);
             this.cbVacaciones.TabIndex = 14;
@@ -194,7 +194,7 @@
             // cbEstudio
             // 
             this.cbEstudio.AutoSize = true;
-            this.cbEstudio.Location = new System.Drawing.Point(293, 97);
+            this.cbEstudio.Location = new System.Drawing.Point(293, 78);
             this.cbEstudio.Name = "cbEstudio";
             this.cbEstudio.Size = new System.Drawing.Size(88, 26);
             this.cbEstudio.TabIndex = 13;
@@ -204,7 +204,7 @@
             // lblLicencia
             // 
             this.lblLicencia.AutoSize = true;
-            this.lblLicencia.Location = new System.Drawing.Point(264, 55);
+            this.lblLicencia.Location = new System.Drawing.Point(253, 42);
             this.lblLicencia.Name = "lblLicencia";
             this.lblLicencia.Size = new System.Drawing.Size(72, 22);
             this.lblLicencia.TabIndex = 12;
@@ -213,7 +213,7 @@
             // lblFaltaUniforme
             // 
             this.lblFaltaUniforme.AutoSize = true;
-            this.lblFaltaUniforme.Location = new System.Drawing.Point(30, 55);
+            this.lblFaltaUniforme.Location = new System.Drawing.Point(19, 42);
             this.lblFaltaUniforme.Name = "lblFaltaUniforme";
             this.lblFaltaUniforme.Size = new System.Drawing.Size(134, 22);
             this.lblFaltaUniforme.TabIndex = 11;
@@ -221,11 +221,11 @@
             // 
             // txtComentario
             // 
-            this.txtComentario.Location = new System.Drawing.Point(38, 760);
+            this.txtComentario.Location = new System.Drawing.Point(16, 646);
             this.txtComentario.Multiline = true;
             this.txtComentario.Name = "txtComentario";
             this.txtComentario.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtComentario.Size = new System.Drawing.Size(738, 110);
+            this.txtComentario.Size = new System.Drawing.Size(738, 83);
             this.txtComentario.TabIndex = 8;
             // 
             // lblTarea
@@ -256,9 +256,9 @@
             this.grpTarea.Controls.Add(this.cmbTarea);
             this.grpTarea.Font = new System.Drawing.Font("Impact", 9F);
             this.grpTarea.ForeColor = System.Drawing.Color.White;
-            this.grpTarea.Location = new System.Drawing.Point(38, 29);
+            this.grpTarea.Location = new System.Drawing.Point(12, 12);
             this.grpTarea.Name = "grpTarea";
-            this.grpTarea.Size = new System.Drawing.Size(1069, 197);
+            this.grpTarea.Size = new System.Drawing.Size(994, 180);
             this.grpTarea.TabIndex = 8;
             this.grpTarea.TabStop = false;
             this.grpTarea.Text = "Complete para registrar la tarea";
@@ -336,7 +336,7 @@
             this.lblComentario.AutoSize = true;
             this.lblComentario.BackColor = System.Drawing.Color.Transparent;
             this.lblComentario.ForeColor = System.Drawing.Color.White;
-            this.lblComentario.Location = new System.Drawing.Point(34, 716);
+            this.lblComentario.Location = new System.Drawing.Point(12, 598);
             this.lblComentario.Name = "lblComentario";
             this.lblComentario.Size = new System.Drawing.Size(94, 22);
             this.lblComentario.TabIndex = 11;
@@ -347,7 +347,7 @@
             this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(141)))));
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(12, 899);
+            this.btnCancelar.Location = new System.Drawing.Point(38, 761);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(111, 45);
             this.btnCancelar.TabIndex = 11;
@@ -360,7 +360,7 @@
             this.btnGrabar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(141)))));
             this.btnGrabar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnGrabar.ForeColor = System.Drawing.Color.White;
-            this.btnGrabar.Location = new System.Drawing.Point(791, 899);
+            this.btnGrabar.Location = new System.Drawing.Point(776, 761);
             this.btnGrabar.Name = "btnGrabar";
             this.btnGrabar.Size = new System.Drawing.Size(111, 45);
             this.btnGrabar.TabIndex = 12;
@@ -377,11 +377,11 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            this.dgvTareas.Location = new System.Drawing.Point(38, 252);
+            this.dgvTareas.Location = new System.Drawing.Point(12, 212);
             this.dgvTareas.Name = "dgvTareas";
             this.dgvTareas.RowHeadersWidth = 62;
             this.dgvTareas.RowTemplate.Height = 28;
-            this.dgvTareas.Size = new System.Drawing.Size(888, 165);
+            this.dgvTareas.Size = new System.Drawing.Size(842, 122);
             this.dgvTareas.TabIndex = 13;
             // 
             // Column1
@@ -423,9 +423,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1238, 956);
+            this.ClientSize = new System.Drawing.Size(1200, 813);
             this.Controls.Add(this.dgvTareas);
             this.Controls.Add(this.btnGrabar);
             this.Controls.Add(this.btnCancelar);
@@ -437,6 +438,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmRegistrarTareas";
             this.Text = "Registrar Tareas";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmRegistrarTareas_Load);
             this.grpDetalle.ResumeLayout(false);
             this.grpDetalle.PerformLayout();

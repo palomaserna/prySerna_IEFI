@@ -33,6 +33,8 @@
             this.msPrincipal = new System.Windows.Forms.MenuStrip();
             this.tareasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarTareaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.msHistorialTarea = new System.Windows.Forms.ToolStripMenuItem();
+            this.msHistorialAdministrador = new System.Windows.Forms.ToolStripMenuItem();
             this.msAdministracion = new System.Windows.Forms.ToolStripMenuItem();
             this.usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msAuditoria = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,8 +45,6 @@
             this.lblContador = new System.Windows.Forms.ToolStripStatusLabel();
             this.tmTiempo = new System.Windows.Forms.Timer(this.components);
             this.tmFecha = new System.Windows.Forms.Timer(this.components);
-            this.msHistorialTarea = new System.Windows.Forms.ToolStripMenuItem();
-            this.msHistorialAdministrador = new System.Windows.Forms.ToolStripMenuItem();
             this.msPrincipal.SuspendLayout();
             this.ssUsuarioT.SuspendLayout();
             this.SuspendLayout();
@@ -77,10 +77,30 @@
             // 
             // registrarTareaToolStripMenuItem
             // 
+            this.registrarTareaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(141)))));
+            this.registrarTareaToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.registrarTareaToolStripMenuItem.Name = "registrarTareaToolStripMenuItem";
             this.registrarTareaToolStripMenuItem.Size = new System.Drawing.Size(363, 34);
             this.registrarTareaToolStripMenuItem.Text = "Registrar Tarea";
             this.registrarTareaToolStripMenuItem.Click += new System.EventHandler(this.registrarTareaToolStripMenuItem_Click);
+            // 
+            // msHistorialTarea
+            // 
+            this.msHistorialTarea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(141)))));
+            this.msHistorialTarea.ForeColor = System.Drawing.Color.White;
+            this.msHistorialTarea.Name = "msHistorialTarea";
+            this.msHistorialTarea.Size = new System.Drawing.Size(363, 34);
+            this.msHistorialTarea.Text = "Historial de Tareas";
+            this.msHistorialTarea.Click += new System.EventHandler(this.historialDeTareasToolStripMenuItem_Click);
+            // 
+            // msHistorialAdministrador
+            // 
+            this.msHistorialAdministrador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(141)))));
+            this.msHistorialAdministrador.ForeColor = System.Drawing.Color.White;
+            this.msHistorialAdministrador.Name = "msHistorialAdministrador";
+            this.msHistorialAdministrador.Size = new System.Drawing.Size(363, 34);
+            this.msHistorialAdministrador.Text = "Historial de Tareas de Usuarios";
+            this.msHistorialAdministrador.Click += new System.EventHandler(this.historialDeTareasDeUsuariosToolStripMenuItem_Click);
             // 
             // msAdministracion
             // 
@@ -98,7 +118,7 @@
             this.usuarioToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(141)))));
             this.usuarioToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
-            this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(187, 34);
+            this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.usuarioToolStripMenuItem.Text = "Usuario";
             this.usuarioToolStripMenuItem.Click += new System.EventHandler(this.usuarioToolStripMenuItem_Click);
             // 
@@ -107,7 +127,7 @@
             this.msAuditoria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(133)))), ((int)(((byte)(141)))));
             this.msAuditoria.ForeColor = System.Drawing.Color.White;
             this.msAuditoria.Name = "msAuditoria";
-            this.msAuditoria.Size = new System.Drawing.Size(187, 34);
+            this.msAuditoria.Size = new System.Drawing.Size(270, 34);
             this.msAuditoria.Text = "Auditoria";
             this.msAuditoria.Click += new System.EventHandler(this.msAuditoria_Click);
             // 
@@ -163,20 +183,6 @@
             // tmFecha
             // 
             this.tmFecha.Tick += new System.EventHandler(this.tmFecha_Tick);
-            // 
-            // msHistorialTarea
-            // 
-            this.msHistorialTarea.Name = "msHistorialTarea";
-            this.msHistorialTarea.Size = new System.Drawing.Size(363, 34);
-            this.msHistorialTarea.Text = "Historial de Tareas";
-            this.msHistorialTarea.Click += new System.EventHandler(this.historialDeTareasToolStripMenuItem_Click);
-            // 
-            // msHistorialAdministrador
-            // 
-            this.msHistorialAdministrador.Name = "msHistorialAdministrador";
-            this.msHistorialAdministrador.Size = new System.Drawing.Size(363, 34);
-            this.msHistorialAdministrador.Text = "Historial de Tareas de Usuarios";
-            this.msHistorialAdministrador.Click += new System.EventHandler(this.historialDeTareasDeUsuariosToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 

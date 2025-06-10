@@ -27,14 +27,23 @@ namespace prySerna_IEFI
         private void frmRegistrarTareas_Load(object sender, EventArgs e)
         {
             clsConexión BD = new clsConexión();
-            BD.CargarTarea(dgvTareas);
+            
+            //BD.CargarTarea(dgvTareas);
+          //  BD.CargarTareaPorUsuario(dgvTareas, UsuarioN);
+
             using (SqlConnection conexion = new SqlConnection(BD.cadenaConexion))
             {
                 conexion.Open();
-                SqlCommand cmd = new SqlCommand("SELECT Id, Nombre FROM TareasTipo", conexion);
-                SqlDataAdapter adaptador = new SqlDataAdapter(cmd);
+                SqlCommand comando = new SqlCommand("SELECT Id, Nombre FROM TareasTipo", conexion);
+
+                SqlDataAdapter adaptador = new SqlDataAdapter(comando);
                 DataTable dt = new DataTable();
                 adaptador.Fill(dt);
+                DataRow filaTodos = dt.NewRow();
+                filaTodos["Id"] = 0;
+                filaTodos["Nombre"] = "Todos";
+                dt.Rows.InsertAt(filaTodos, 0);
+
                 cmbTarea.DataSource = dt;
                 cmbTarea.DisplayMember = "Nombre";
                 cmbTarea.ValueMember = "Id";
@@ -42,15 +51,22 @@ namespace prySerna_IEFI
             using (SqlConnection conexion = new SqlConnection(BD.cadenaConexion))
             {
                 conexion.Open();
-                SqlCommand cmd = new SqlCommand("SELECT Id, Nombre FROM Lugar", conexion);
-                SqlDataAdapter adaptador = new SqlDataAdapter(cmd);
+                SqlCommand comando = new SqlCommand("SELECT Id, Nombre FROM Lugar", conexion);
+
+                SqlDataAdapter adaptador = new SqlDataAdapter(comando);
                 DataTable dt = new DataTable();
                 adaptador.Fill(dt);
+                DataRow filaTodos = dt.NewRow();
+                filaTodos["Id"] = 0;
+                filaTodos["Nombre"] = "Todos";
+                dt.Rows.InsertAt(filaTodos, 0);
+
                 cmbLugar.DataSource = dt;
                 cmbLugar.DisplayMember = "Nombre";
                 cmbLugar.ValueMember = "Id";
             }
-            clsUsuario Iniciar = new clsUsuario();
+        
+         clsUsuario Iniciar = new clsUsuario();
            if (RolUsuario == "Administrador")
             {
                 lblAgregarTarea.Visible = true;
@@ -65,23 +81,6 @@ namespace prySerna_IEFI
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            /* try
-             {
-                 dgvTareas.Rows.Add(
-
-                  Convert.ToInt32(nmCodigo.Value),
-                  txtUsuario.Text,
-                  DateTime.Parse(dtFecha.Text),
-                  Convert.ToInt32(cmbTarea.SelectedValue),
-                  Convert.ToInt32(cmbLugar.SelectedValue));
-
-
-
-             }
-             catch (Exception ex)
-             {
-                 MessageBox.Show($"No se agrego la tarea" + ex.Message);
-             *///}
             try
             {
                 // Limpiar grilla si ya tiene datos
@@ -113,43 +112,6 @@ namespace prySerna_IEFI
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-            /* try
-             {
-                 clsTarea tarea = new clsTarea();
-                 clsConexión conexion = new clsConexión();
-                 tarea.IdUsuario = Convert.ToInt32(nmCodigo.Value);
-                 tarea.Usuario = txtUsuario.Text;
-                 tarea.Fecha = DateTime.Parse(dtFecha.Text);
-                 tarea.TareaId = Convert.ToInt32(cmbTarea.SelectedValue);
-                 tarea.LugarId = Convert.ToInt32(cmbLugar.SelectedValue);
-                 tarea.Insumo = cbInsumo.Checked;
-                 tarea.Estudio = cbEstudio.Checked;
-                 tarea.Vacaciones = cbVacaciones.Checked;
-                 tarea.Enfermedad = cbEnfermedad.Checked;
-                 tarea.Salario = cbSalario.Checked;
-                 tarea.Recibo = cbRecibo.Checked;
-                 tarea.Comentario= txtComentario.Text;
-                 conexion.GrabarTarea(tarea);
-                 MessageBox.Show("Tarea grabada correctamente");
-
-             }
-             catch (Exception ex)
-             {
-                 MessageBox.Show($"No se grabo la tarea" + ex.Message);
-             }
-             dgvTareas.DataSource = null;
-             dgvTareas.Rows.Clear();
-             nmCodigo.Value = 0;
-             txtUsuario.Clear();
-             cmbLugar.SelectedIndex = -1;
-             cmbTarea.SelectedIndex = -1;
-             cbInsumo.Checked = false;
-             cbEstudio.Checked = false;
-             cbVacaciones.Checked = false;
-             cbEnfermedad.Checked = false;
-             cbSalario.Checked = false;
-             cbRecibo.Checked = false;
-            */// txtComentario.Clear();
             try
             {
                 if (dgvTareas.Rows.Count == 0)

@@ -39,12 +39,10 @@ namespace prySerna_IEFI
                     {
                         if (reader.Read())
                         {
-                            idUsuario = reader.GetInt32(0); // IdUsuario
-                            Iniciar.Rol = reader.GetString(1); // Rol
-
-                            // Ahora actualizamos la última conexión
-                            reader.Close(); // Cerramos antes de lanzar nuevo comando
-
+                            idUsuario = reader.GetInt32(0); 
+                            Iniciar.Rol = reader.GetString(1);
+                           
+                            reader.Close(); 
                             string updateQuery = "UPDATE Usuarios SET UltimaConexion = @UltimaConexion WHERE IdUsuario = @IdUsuario";
                             SqlCommand updateCommand = new SqlCommand(updateQuery, conexion);
                             updateCommand.Parameters.AddWithValue("@UltimaConexion", DateTime.Now);
@@ -84,7 +82,7 @@ namespace prySerna_IEFI
                     object resultado = comando.ExecuteScalar();
                     nuevoIdUsuario = Convert.ToInt32(resultado);
 
-                    // Actualizar UltimaConexion a ahora
+                  //Utima conexion ahora
                     string queryU = "UPDATE Usuarios SET UltimaConexion = @UltimaConexion WHERE IdUsuario = @IdUsuario";
                     SqlCommand comandoU = new SqlCommand(queryU, conexion);
                     comandoU.Parameters.AddWithValue("@UltimaConexion", DateTime.Now);
@@ -128,7 +126,6 @@ namespace prySerna_IEFI
             {
                 conexion.Open();
 
-                // Obtener el tiempo total anterior
                 string query = "SELECT TiempoTotal FROM Usuarios WHERE Usuario = @Usuario";
                 SqlCommand comando = new SqlCommand(query, conexion);
                 comando.Parameters.AddWithValue("@Usuario", usuario);
@@ -143,7 +140,6 @@ namespace prySerna_IEFI
 
                 TimeSpan nuevoTiempoTotal = tiempoTotalAnterior + tiempoSesion;
 
-                // Actualizar: UltimaConexion, TiempoUltimaConexion y TiempoTotal
                 string queryUpdate = @"
             UPDATE Usuarios 
             SET 
@@ -153,7 +149,7 @@ namespace prySerna_IEFI
             WHERE Usuario = @Usuario";
 
                 SqlCommand comandoA = new SqlCommand(queryUpdate, conexion);
-                comandoA.Parameters.AddWithValue("@FechaActual", DateTime.Now); // Aquí puedes cambiar a otra fecha si lo necesitas
+                comandoA.Parameters.AddWithValue("@FechaActual", DateTime.Now);
                 comandoA.Parameters.AddWithValue("@TiempoSesion", tiempoSesion);
                 comandoA.Parameters.AddWithValue("@TiempoTotal", nuevoTiempoTotal);
                 comandoA.Parameters.AddWithValue("@Usuario", usuario);
@@ -351,6 +347,24 @@ namespace prySerna_IEFI
             }
 
         }
+        public void CargarTareaPorUsuario(DataGridView grilla, string nombreUsuario)
+        {
+            using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+            {
+                conexion.Open();
+                string query = "SELECT IdUsuario, Usuario, Fecha, TareaId, LugarId FROM Tareas WHERE Usuario = @Usuario";
+                SqlCommand comando = new SqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@Usuario", nombreUsuario);
+
+                SqlDataAdapter adaptador = new SqlDataAdapter(comando);
+                DataTable dt = new DataTable();
+                adaptador.Fill(dt);
+
+                grilla.AutoGenerateColumns = true; // Solo si definiste las columnas manualmente
+                grilla.DataSource = dt;
+            }
+        }
+
         public void GrabarTarea(clsTarea Tarea)
         {
             try

@@ -31,8 +31,6 @@ namespace prySerna_IEFI
                 SqlDataAdapter adaptador = new SqlDataAdapter(comando);
                 DataTable dt = new DataTable();
                 adaptador.Fill(dt);
-
-                // Agregamos opción "Todos"
                 DataRow filaTodos = dt.NewRow();
                 filaTodos["Id"] = 0;
                 filaTodos["Nombre"] = "Todos";
@@ -50,8 +48,6 @@ namespace prySerna_IEFI
                 SqlDataAdapter adaptador = new SqlDataAdapter(comando);
                 DataTable dt = new DataTable();
                 adaptador.Fill(dt);
-
-                // Agregamos opción "Todos"
                 DataRow filaTodos = dt.NewRow();
                 filaTodos["Id"] = 0;
                 filaTodos["Nombre"] = "Todos";
