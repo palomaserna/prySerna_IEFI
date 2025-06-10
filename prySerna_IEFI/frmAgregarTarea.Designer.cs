@@ -91,6 +91,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAgregarTarea";
             this.Text = "Agregar una Tarea";
+            this.Load += new System.EventHandler(this.frmAgregarTarea_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

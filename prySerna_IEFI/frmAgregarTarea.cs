@@ -24,13 +24,6 @@ namespace prySerna_IEFI
             {
                 clsConexión BD = new clsConexión();
                 string nombreTarea = txtTarea.Text.Trim();
-
-                if (string.IsNullOrEmpty(nombreTarea))
-                {
-                    MessageBox.Show("Ingrese un nombre para la tarea.");
-                    return;
-                }
-
                 BD.AgregarTareaTipo(nombreTarea);
                 MessageBox.Show("Tarea agregada correctamente.");
                 txtTarea.Clear();
@@ -40,6 +33,22 @@ namespace prySerna_IEFI
                 MessageBox.Show("Error al agregar la tarea: " + ex.Message);
             }
 
+        }
+
+        private void frmAgregarTarea_Load(object sender, EventArgs e)
+        {
+            ValidarDatos();
+        }
+        public void ValidarDatos()
+        {
+            if (txtTarea.Text == "")
+            {
+                btnAgregar.Enabled = false;
+            }
+            else
+            {
+                btnAgregar.Enabled = true;
+            }
         }
     }
 }

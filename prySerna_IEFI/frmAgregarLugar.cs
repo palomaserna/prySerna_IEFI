@@ -19,7 +19,7 @@ namespace prySerna_IEFI
 
         private void frmAgregarLugar_Load(object sender, EventArgs e)
         {
-
+            ValidarDatos();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -28,13 +28,6 @@ namespace prySerna_IEFI
             {
                 clsConexión BD = new clsConexión();
                 string nombreLugar = txtLugar.Text.Trim();
-
-                if (string.IsNullOrEmpty(nombreLugar))
-                {
-                    MessageBox.Show("Ingrese un nombre para el lugar");
-                    return;
-                }
-
                 BD.AgregarTareaTipo(nombreLugar);
                 MessageBox.Show("Lugar agregado correctamente");
                 txtLugar.Clear();
@@ -42,6 +35,17 @@ namespace prySerna_IEFI
             catch (Exception ex)
             {
                 MessageBox.Show("Error al agregar el lugar: " + ex.Message);
+            }
+        }
+        public void ValidarDatos()
+        {
+            if (txtLugar.Text == "")
+            {
+                btnAgregar.Enabled = false;
+            }
+            else
+            {
+                btnAgregar.Enabled = true;
             }
         }
     }

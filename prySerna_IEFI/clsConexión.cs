@@ -141,12 +141,12 @@ namespace prySerna_IEFI
                 TimeSpan nuevoTiempoTotal = tiempoTotalAnterior + tiempoSesion;
 
                 string queryUpdate = @"
-            UPDATE Usuarios 
-            SET 
-                UltimaConexion = @FechaActual,              -- Fecha y hora actual
-                TiempoUltimaConexion = @TiempoSesion,       -- Duración de esta sesión
-                TiempoTotal = @TiempoTotal                  -- Acumulado total
-            WHERE Usuario = @Usuario";
+                 UPDATE Usuarios 
+                 SET 
+                 UltimaConexion = @FechaActual,              
+                 TiempoUltimaConexion = @TiempoSesion,       
+                 TiempoTotal = @TiempoTotal                  
+                 WHERE Usuario = @Usuario";
 
                 SqlCommand comandoA = new SqlCommand(queryUpdate, conexion);
                 comandoA.Parameters.AddWithValue("@FechaActual", DateTime.Now);
@@ -157,8 +157,6 @@ namespace prySerna_IEFI
                 comandoA.ExecuteNonQuery();
             }
         }
-
-
 
         public void CargarUsuarios(DataGridView dgv)
         {
