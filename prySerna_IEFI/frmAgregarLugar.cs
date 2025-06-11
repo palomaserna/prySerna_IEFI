@@ -28,7 +28,7 @@ namespace prySerna_IEFI
             {
                 clsConexión BD = new clsConexión();
                 string nombreLugar = txtLugar.Text.Trim();
-                BD.AgregarTareaTipo(nombreLugar);
+                BD.AgregarLugar(nombreLugar);
                 MessageBox.Show("Lugar agregado correctamente");
                 txtLugar.Clear();
             }
